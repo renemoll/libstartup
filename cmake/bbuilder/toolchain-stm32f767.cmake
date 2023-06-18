@@ -34,7 +34,7 @@ set(ARM_API
 	-mabi=aapcs						# Use 'ARM Architecture Procedure Calling Standard' ABI.
 )
 
-if(${USE_HW_FPU})
+if(${BOB_USE_HW_FPU})
 	list(APPEND ARM_API
 		-mfloat-abi=hard			# FPU ABI: hard(ware).
 	)
@@ -66,7 +66,6 @@ add_link_options(
 
 add_compile_definitions(
 	STM32F767xx						# Define the specific MCU.
-	# USE_FULL_LL_DRIVER				# Enable ST's Low Level API.
 )
 
 #

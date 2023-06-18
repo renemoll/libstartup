@@ -9,16 +9,16 @@ cmake_minimum_required(VERSION 3.12 FATAL_ERROR)
 #
 
 function(ensure_out_of_source_build)
-  get_filename_component(srcdir "${CMAKE_SOURCE_DIR}" REALPATH)
-  get_filename_component(bindir "${CMAKE_BINARY_DIR}" REALPATH)
+	get_filename_component(srcdir "${CMAKE_SOURCE_DIR}" REALPATH)
+	get_filename_component(bindir "${CMAKE_BINARY_DIR}" REALPATH)
 
-  if("${srcdir}" STREQUAL "${bindir}")
-	message(FATAL_ERROR "\n
-		In-source build detected!\
-		Generate an out of source build with:\
-		\
+	if("${srcdir}" STREQUAL "${bindir}")
+		message(FATAL_ERROR "\n
+			In-source build detected!\
+			Generate an out of source build with:\
+			\
 			cmake -S . -B build")
-  endif()
+	endif()
 endfunction()
 ensure_out_of_source_build()
 
@@ -53,8 +53,14 @@ include(bob_compiler)
 include(bob_options)
 
 add_library(bob_interface INTERFACE)
-bob_configure_compiler(bob_interface)
+bob_configure_compiler_warnings(bob_interface)
+bob_configure_compiler_codegen(bob_interface)
 bob_configure_options(bob_interface)
+
+target_compile_features(bob_interface
+	INTERFACE
+		cxx_std_20
+)
 
 #
 # Cortex-M generic templates

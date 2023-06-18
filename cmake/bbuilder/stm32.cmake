@@ -1,28 +1,28 @@
 
-add_library(STM32_CMSIS INTERFACE)
-target_include_directories(STM32_CMSIS
+add_library(stm32_cmsis INTERFACE)
+target_include_directories(stm32_cmsis
 	INTERFACE
-	"${libstartup_SOURCE_DIR}/external/src/cmsis_device_f7.git/Include" # todo: rename to a common name (i.e. stm32_cmsis...)?
+		"${libstartup_SOURCE_DIR}/external/src/cmsis_device_f7.git/Include" # todo: rename to a common name (i.e. stm32_cmsis...)?
 )
-target_link_libraries(STM32_CMSIS
+target_link_libraries(stm32_cmsis
 	INTERFACE
-		CMSIS
+		cmsis
 )
 
-add_library(STM32_HAL OBJECT
+add_library(stm32_hal STATIC
 	"${libstartup_SOURCE_DIR}/external/src/stm32f7xx_hal_driver.git/Src/stm32f7xx_ll_gpio.c"
 	# todo: extend
 )
-target_include_directories(STM32_HAL
+target_include_directories(stm32_hal
 	PUBLIC
 		"${libstartup_SOURCE_DIR}/external/src/stm32f7xx_hal_driver.git/Inc" # todo: rename to a common name (i.e. stm32_hal...)?
 )
-target_compile_definitions(STM32_HAL
+target_compile_definitions(stm32_hal
 	PUBLIC
 		USE_FULL_LL_DRIVER
 )
-#todo: this leaks... NOK...
-target_compile_options(STM32_HAL
+# todo: think of an alternative to INTERFACE here (these leak to other targets...)
+target_compile_options(stm32_hal
 	INTERFACE
 		$<$<COMPILE_LANGUAGE:CXX>:-Wno-volatile>
 		$<$<COMPILE_LANGUAGE:CXX>:-Wno-useless-cast>
@@ -31,7 +31,7 @@ target_compile_options(STM32_HAL
 		-Wno-pedantic
 		$<$<COMPILE_LANGUAGE:CXX>:-Wno-sign-conversion>
 )
-target_link_libraries(STM32_HAL
+target_link_libraries(stm32_hal
 	PUBLIC
-		STM32_CMSIS
+		stm32_cmsis
 )
