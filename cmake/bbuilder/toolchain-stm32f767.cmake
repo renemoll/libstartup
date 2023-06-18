@@ -68,59 +68,7 @@ add_compile_definitions(
 	STM32F767xx						# Define the specific MCU.
 )
 
-#
-# Helper function
-#
-function(bob_firmware_image target)
-	set(LINKER_SCRIPTS
-		${CMAKE_SOURCE_DIR}/linkerscripts/stm32f7/memory.ld
-		${CMAKE_SOURCE_DIR}/linkerscripts/stm32f7/sections.ld
-	)
-
-	target_link_options(${target} PRIVATE
-		-T${CMAKE_SOURCE_DIR}/linkerscripts/stm32f7/memory.ld
-		-T${CMAKE_SOURCE_DIR}/linkerscripts/stm32f7/sections.ld
-		LINKER:--print-memory-usage
-		LINKER:-Map=$<TARGET_FILE:${target}>.map
-	)
-
-	set_target_properties(${target}
-		PROPERTIES
-			SUFFIX .elf
-		LINK_DEPENDS "${LINKER_SCRIPTS}"
-	)
-
-	add_custom_command(
-		TARGET ${target}
-  		POST_BUILD
-  		COMMAND ${CMAKE_OBJCOPY} -O ihex $<TARGET_FILE:${target}>
-			${CMAKE_CURRENT_BINARY_DIR}/$<TARGET_NAME:${target}>.hex
-	)
-
-	add_custom_command(
-		TARGET ${target}
-  		POST_BUILD
-  		COMMAND ${CMAKE_OBJCOPY} -I elf32-littlearm -O binary $<TARGET_FILE:${target}>
-			${CMAKE_CURRENT_BINARY_DIR}/$<TARGET_NAME:${target}>.bin
-	)
-
-	add_custom_command(
-		TARGET ${target}
-		POST_BUILD
-		COMMAND ${TOOLCHAIN_SIZE} --format=berkeley $<TARGET_FILE:${target}>
-			> ${CMAKE_CURRENT_BINARY_DIR}/$<TARGET_NAME:${target}>.bsz
-	)
-	add_custom_command(
-		TARGET ${target}
-		POST_BUILD
-		COMMAND ${TOOLCHAIN_SIZE} --format=sysv -x $<TARGET_FILE:${target}>
-				>${CMAKE_CURRENT_BINARY_DIR}/$<TARGET_NAME:${target}>.ssz
-	)
-
-	add_custom_command(
-		TARGET ${target}
-		POST_BUILD
-		COMMAND ${TOOLCHAIN_OBJDUMP} -d -S $<TARGET_FILE:${target}>
-				>${CMAKE_CURRENT_BINARY_DIR}/$<TARGET_NAME:${target}>.dasm
-	)
-endfunction()
+set(LINKER_SCRIPTS
+	${CMAKE_SOURCE_DIR}/linkerscripts/stm32f7/memory.ld
+	${CMAKE_SOURCE_DIR}/linkerscripts/stm32f7/sections.ld
+)

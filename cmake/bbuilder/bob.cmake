@@ -51,6 +51,7 @@ configure_file(cmake/version.h.in version.h)
 
 include(bob_compiler)
 include(bob_options)
+include(bob_firmware_image)
 
 add_library(bob_interface INTERFACE)
 bob_configure_compiler_warnings(bob_interface)
