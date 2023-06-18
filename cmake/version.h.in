@@ -1,0 +1,3 @@
+// the configured options and settings for libstartup
+#define LIBSTARTUP_VERSION_MAJOR @libstartup_VERSION_MAJOR@
+#define LIBSTARTUP_VERSION_MINOR @libstartup_VERSION_MINOR@

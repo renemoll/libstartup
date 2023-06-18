@@ -41,6 +41,11 @@ endif()
 message(STATUS "CMAKE_BUILD_TYPE is ${CMAKE_BUILD_TYPE}")
 
 #
+# Generate a version header
+#
+configure_file(cmake/version.h.in version.h)
+
+#
 # Project template
 #
 

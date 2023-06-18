@@ -12,6 +12,7 @@ target_link_libraries(CORTEXM
 )
 target_include_directories(CORTEXM
 	PUBLIC
+		${PROJECT_BINARY_DIR}
 		${PROJECT_SOURCE_DIR}/include
 # 		${stm32cubef7_SOURCE_DIR}/Drivers/CMSIS/Core/Include
 # 		${stm32cubef7_SOURCE_DIR}/Drivers/CMSIS/Device/ST/STM32F7xx/Include
