@@ -3,6 +3,11 @@ cmake_minimum_required(VERSION 3.12)
 project(libstartup VERSION 0.1)
 enable_language(CXX C ASM)
 
+if (CMAKE_SOURCE_DIR STREQUAL PROJECT_SOURCE_DIR)
+else()
+	# todo: disable example build
+endif()
+
 set(CMAKE_C_STANDARD 17)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_C_EXTENSIONS OFF)

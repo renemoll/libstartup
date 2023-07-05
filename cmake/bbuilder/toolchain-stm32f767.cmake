@@ -6,7 +6,7 @@ set(CMAKE_SYSTEM_PROCESSOR arm)
 #
 find_program(CROSS_GCC_PATH "arm-none-eabi-gcc"
 	PATH
-		"${libstartup_SOURCE_DIR}/external/src/arm-gnu-toolchain-12.2.mpacbti-rel1-x86_64-arm-none-eabi/bin"
+		"${CMAKE_SOURCE_DIR}/external/src/arm-gnu-toolchain-12.2.mpacbti-rel1-x86_64-arm-none-eabi/bin"
 		"/opt/arm-gnu-toolchain-12.2.mpacbti-rel1-x86_64-arm-none-eabi/bin"
 	NO_DEFAULT_PATH)
 get_filename_component(TOOLCHAIN_PATH ${CROSS_GCC_PATH} PATH)
@@ -68,7 +68,8 @@ add_compile_definitions(
 	STM32F767xx						# Define the specific MCU.
 )
 
+#todo: what if I want to override these?
 set(LINKER_SCRIPTS
-	${CMAKE_SOURCE_DIR}/linkerscripts/stm32f7/memory.ld
-	${CMAKE_SOURCE_DIR}/linkerscripts/stm32f7/sections.ld
+	${CMAKE_CURRENT_LIST_DIR}/../../linkerscripts/stm32f7/memory.ld
+	${CMAKE_CURRENT_LIST_DIR}/../../linkerscripts/stm32f7/sections.ld
 )
