@@ -4,8 +4,9 @@ project(libstartup VERSION 0.1)
 enable_language(CXX C ASM)
 
 if (CMAKE_SOURCE_DIR STREQUAL PROJECT_SOURCE_DIR)
+	option(libstartup_examples "Build examples" ON)
 else()
-	# todo: disable example build
+	option(libstartup_examples "Build examples" OFF)
 endif()
 
 set(CMAKE_C_STANDARD 17)
@@ -28,4 +29,7 @@ include(bob)
 #
 
 add_subdirectory(src)
-add_subdirectory(example)
+
+if (${libstartup_examples})
+	add_subdirectory(example)
+endif()
