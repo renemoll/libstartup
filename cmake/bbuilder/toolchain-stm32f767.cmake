@@ -34,16 +34,6 @@ set(ARM_API
 	-mabi=aapcs						# Use 'ARM Architecture Procedure Calling Standard' ABI.
 )
 
-if(${BOB_USE_HW_FPU})
-	list(APPEND ARM_API
-		-mfloat-abi=hard			# FPU ABI: hard(ware).
-	)
-else()
-	list(APPEND ARM_API
-		-mfloat-abi=soft			# FPU ABI: soft(ware).
-	)
-endif()
-
 add_compile_options(
 	${ARM_API}
 	# --specs=nano.specs			# newlib nano.

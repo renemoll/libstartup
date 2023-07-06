@@ -4,6 +4,19 @@ option(BOB_USE_RTTI "Generate run-time type identification (RTTI)" OFF)
 option(BOB_USE_EXCEPTIONS "Allow exceptions" OFF)
 option(BOB_COMPILER_WARN_EVERYTHING "Enable -Weverything (Clang only)" OFF)
 
+if(${BOB_USE_FPU})
+	set(ARM_FPU_API
+		-mfloat-abi=hard			# FPU ABI: hard(ware).
+	)
+else()
+	set(ARM_FPU_API
+		-mfloat-abi=soft			# FPU ABI: soft(ware).
+	)
+endif()
+
+add_compile_options(${ARM_FPU_API})
+add_link_options(${ARM_FPU_API})
+
 function(bob_configure_options target)
 	if((CMAKE_CXX_COMPILER_ID STREQUAL "GNU") OR (CMAKE_CXX_COMPILER_ID STREQUAL "Clang"))
 		target_compile_options(${target}
