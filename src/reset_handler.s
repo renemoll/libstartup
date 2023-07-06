@@ -6,7 +6,7 @@
 	.func ResetHandler
 	.type ResetHandler, %function
 ResetHandler:
-	ldr sp, =_estack
+	ldr sp, =__stack_top__
 	bl __prepare_environment
 	b __start
 	.endfunc
