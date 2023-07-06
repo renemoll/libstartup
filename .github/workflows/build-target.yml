@@ -14,7 +14,9 @@ jobs:
           python-version: '3.x'
 
       - name: Bootstrap
-        run: python3 bootstrap.py --no-toolchain
+        run: |
+          pip install docopt
+          python3 bootstrap.py --no-toolchain
 
       - name: Build
         uses: docker://renemoll/builder_arm_gcc:latest
