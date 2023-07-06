@@ -1,5 +1,18 @@
 #!/usr/bin/env python3
 
+"""Bootstrap
+
+Usage:
+	bootstrap.py [--no-toolchain]
+	bootstrap.py -h | --help
+	bootstrap.py --version
+
+Options:
+	-h --help		Show this screen.
+	--version		Show version.
+	---no-toolchain	Do not use retrieve the toolchain/compiler/etc.
+"""
+
 import logging
 import urllib.request
 import platform
@@ -7,11 +20,16 @@ import pathlib
 import shutil
 import subprocess
 
-deps = {
+import docopt
+
+toolchain = {
 	'gcc-arm': {
 		'windows': 'https://developer.arm.com/-/media/Files/downloads/gnu/12.2.mpacbti-rel1/binrel/arm-gnu-toolchain-12.2.mpacbti-rel1-mingw-w64-i686-arm-none-eabi.zip',
 		'linux': 'https://developer.arm.com/-/media/Files/downloads/gnu/12.2.mpacbti-rel1/binrel/arm-gnu-toolchain-12.2.mpacbti-rel1-x86_64-arm-none-eabi.tar.xz'
 	},
+}
+
+deps = {
 	'stm32f7': {
 		'repo': 'https://github.com/STMicroelectronics/stm32f7xx_hal_driver.git'
 	},
@@ -61,9 +79,7 @@ def retrieve_repo(url, destination_path):
 
 	return path
 
-if __name__ == '__main__':
-	logging.basicConfig(level=logging.INFO)
-
+def main(retrieve_toolchain):
 	cwd = pathlib.Path(__file__).resolve().parent
 	os = platform.system().lower()
 	logging.info("Bootstrapping for %s", os)
@@ -86,18 +102,29 @@ if __name__ == '__main__':
 	source_path = vendor_path / config['paths']['source']
 	ensure_path(source_path)
 
-	for pkg in deps:
-		# OS specific
-		try:
-			url = deps[pkg][os]
-			archive = get_package(url, dl_path)
-			extract_package(archive, source_path)
-		except KeyError:
-			pass
+	def process(pkg_list):
+		for pkg in pkg_list:
+			# OS specific
+			try:
+				url = pkg_list[pkg][os]
+				archive = get_package(url, dl_path)
+				extract_package(archive, source_path)
+			except KeyError:
+				pass
 
-		# repo
-		try:
-			url = deps[pkg]['repo']
-			retrieve_repo(url, source_path)
-		except KeyError:
-			pass
+			# repo
+			try:
+				url = pkg_list[pkg]['repo']
+				retrieve_repo(url, source_path)
+			except KeyError:
+				pass
+
+	if retrieve_toolchain:
+		process(toolchain)
+	process(deps)
+
+if __name__ == '__main__':
+	logging.basicConfig(level=logging.INFO)
+	arguments = docopt.docopt(__doc__, version='Bootstrap 1.0')
+	retrieve_toolchain = not arguments['--no-toolchain']
+	main(retrieve_toolchain)

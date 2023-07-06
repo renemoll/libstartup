@@ -1,0 +1,22 @@
+name: Build for target
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Bootstrap
+        run: python3 bootstrap.py --no-toolchain
+
+      - name: Build
+        uses: docker://renemoll/builder_arm_gcc:latest
+        with:
+          args: python3 build.py build stm32 --no-container
