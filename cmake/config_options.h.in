@@ -1,0 +1,16 @@
+#ifndef __CONFIG_CMAKE_H__
+#define __CONFIG_CMAKE_H__
+
+#cmakedefine01 BOB_USE_FPU
+
+namespace Config::Options {
+namespace Mcu {
+#if BOB_USE_FPU
+constexpr bool g_enableFpu = true;
+#else
+constexpr bool g_enableFpu = false;
+#endif
+}
+}
+
+#endif

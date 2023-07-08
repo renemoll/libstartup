@@ -8,11 +8,12 @@ add_library(cortex_m OBJECT
 )
 
 # Remove `pedantic` as we call `main`
-set_source_files_properties(system.cpp PROPERTIES COMPILE_FLAGS -Wno-pedantic)
+set_source_files_properties(system.cpp PROPERTIES COMPILE_FLAGS "-Wno-pedantic -Wno-useless-cast -Wno-sign-conversion -Wno-old-style-cast")
 
 target_link_libraries(cortex_m
 	PRIVATE
 		bob_interface
+		stm32_cmsis
 )
 target_include_directories(cortex_m
 	PUBLIC

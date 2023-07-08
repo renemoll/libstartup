@@ -41,8 +41,9 @@ endif()
 message(STATUS "CMAKE_BUILD_TYPE is ${CMAKE_BUILD_TYPE}")
 
 #
-# Generate a version header
+# Generate a option and version headers
 #
+configure_file(cmake/config_options.h.in config_options.h)
 configure_file(cmake/version.h.in version.h)
 
 #
