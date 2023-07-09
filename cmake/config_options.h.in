@@ -2,6 +2,7 @@
 #define __CONFIG_CMAKE_H__
 
 #cmakedefine01 BOB_USE_FPU
+#cmakedefine01 EXPERIMENT_TINY_INIT
 
 namespace Config::Options {
 namespace Mcu {
@@ -11,6 +12,12 @@ constexpr bool g_enableFpu = true;
 constexpr bool g_enableFpu = false;
 #endif
 }
+
+#if EXPERIMENT_TINY_INIT
+constexpr bool g_tinyInit = true;
+#else
+constexpr bool g_tinyInit = false;
+#endif
 }
 
 #endif

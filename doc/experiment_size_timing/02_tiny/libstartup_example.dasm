@@ -1,0 +1,381 @@
+
+/work/build/stm32-release/example/libstartup_example.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00200000 <vectorTable>:
+  200000:	00 00 20 00 01 02 20 00 f9 01 20 00 f9 01 20 00     .. ... ... ... .
+  200010:	f9 01 20 00 f9 01 20 00 f9 01 20 00 f9 01 20 00     .. ... ... ... .
+  200020:	f9 01 20 00 f9 01 20 00 f9 01 20 00 f9 01 20 00     .. ... ... ... .
+  200030:	f9 01 20 00 f9 01 20 00 f9 01 20 00 c5 03 20 00     .. ... ... ... .
+  200040:	f9 01 20 00 f9 01 20 00 f9 01 20 00 f9 01 20 00     .. ... ... ... .
+  200050:	f9 01 20 00 f9 01 20 00 f9 01 20 00 f9 01 20 00     .. ... ... ... .
+  200060:	f9 01 20 00 f9 01 20 00 f9 01 20 00 f9 01 20 00     .. ... ... ... .
+  200070:	f9 01 20 00 f9 01 20 00 f9 01 20 00 f9 01 20 00     .. ... ... ... .
+  200080:	f9 01 20 00 f9 01 20 00 f9 01 20 00 f9 01 20 00     .. ... ... ... .
+  200090:	f9 01 20 00 f9 01 20 00 f9 01 20 00 f9 01 20 00     .. ... ... ... .
+  2000a0:	f9 01 20 00 f9 01 20 00 f9 01 20 00 f9 01 20 00     .. ... ... ... .
+  2000b0:	f9 01 20 00 f9 01 20 00 f9 01 20 00 f9 01 20 00     .. ... ... ... .
+  2000c0:	f9 01 20 00 f9 01 20 00 f9 01 20 00 f9 01 20 00     .. ... ... ... .
+  2000d0:	f9 01 20 00 f9 01 20 00 f9 01 20 00 f9 01 20 00     .. ... ... ... .
+  2000e0:	f9 01 20 00 f9 01 20 00 f9 01 20 00 f9 01 20 00     .. ... ... ... .
+  2000f0:	f9 01 20 00 f9 01 20 00 f9 01 20 00 f9 01 20 00     .. ... ... ... .
+  200100:	f9 01 20 00 f9 01 20 00 f9 01 20 00 f9 01 20 00     .. ... ... ... .
+  200110:	f9 01 20 00 f9 01 20 00 f9 01 20 00 f9 01 20 00     .. ... ... ... .
+  200120:	f9 01 20 00 f9 01 20 00 f9 01 20 00 f9 01 20 00     .. ... ... ... .
+  200130:	f9 01 20 00 f9 01 20 00 f9 01 20 00 f9 01 20 00     .. ... ... ... .
+  200140:	f9 01 20 00 f9 01 20 00 f9 01 20 00 f9 01 20 00     .. ... ... ... .
+  200150:	f9 01 20 00 f9 01 20 00 f9 01 20 00 f9 01 20 00     .. ... ... ... .
+  200160:	f9 01 20 00 f9 01 20 00 f9 01 20 00 f9 01 20 00     .. ... ... ... .
+  200170:	f9 01 20 00 f9 01 20 00 f9 01 20 00 f9 01 20 00     .. ... ... ... .
+  200180:	f9 01 20 00 f9 01 20 00 f9 01 20 00 f9 01 20 00     .. ... ... ... .
+  200190:	f9 01 20 00 f9 01 20 00 f9 01 20 00 f9 01 20 00     .. ... ... ... .
+  2001a0:	f9 01 20 00 f9 01 20 00 f9 01 20 00 f9 01 20 00     .. ... ... ... .
+  2001b0:	f9 01 20 00 f9 01 20 00 f9 01 20 00 f9 01 20 00     .. ... ... ... .
+  2001c0:	f9 01 20 00 f9 01 20 00 f9 01 20 00 f9 01 20 00     .. ... ... ... .
+  2001d0:	f9 01 20 00 f9 01 20 00 f9 01 20 00 f9 01 20 00     .. ... ... ... .
+  2001e0:	f9 01 20 00 f9 01 20 00 f9 01 20 00 f9 01 20 00     .. ... ... ... .
+  2001f0:	f9 01 20 00 f9 01 20 00                             .. ... .
+
+002001f8 <UndefinedHandler>:
+  2001f8:	e7fe      	b.n	2001f8 <UndefinedHandler>
+  2001fa:	bf00      	nop
+  2001fc:	ffff ffff 			@ <UNDEFINED> instruction: 0xffffffff
+
+00200200 <ResetHandler>:
+  200200:	f8df d008 	ldr.w	sp, [pc, #8]	@ 20020c <ResetHandler+0xc>
+  200204:	f000 f804 	bl	200210 <__prepare_environment>
+  200208:	f000 b880 	b.w	20030c <__start>
+  20020c:	20000408 	.word	0x20000408
+
+00200210 <__prepare_environment>:
+  200210:	4833      	ldr	r0, [pc, #204]	@ (2002e0 <__prepare_environment+0xd0>)
+  200212:	4934      	ldr	r1, [pc, #208]	@ (2002e4 <__prepare_environment+0xd4>)
+  200214:	f8d0 2088 	ldr.w	r2, [r0, #136]	@ 0x88
+  200218:	b538      	push	{r3, r4, r5, lr}
+  20021a:	4b33      	ldr	r3, [pc, #204]	@ (2002e8 <__prepare_environment+0xd8>)
+  20021c:	f042 0201 	orr.w	r2, r2, #1
+  200220:	4299      	cmp	r1, r3
+  200222:	f8c0 2088 	str.w	r2, [r0, #136]	@ 0x88
+  200226:	d224      	bcs.n	200272 <__prepare_environment+0x62>
+  200228:	3b01      	subs	r3, #1
+  20022a:	460a      	mov	r2, r1
+  20022c:	1a5b      	subs	r3, r3, r1
+  20022e:	ea4f 0e93 	mov.w	lr, r3, lsr #2
+  200232:	2b03      	cmp	r3, #3
+  200234:	f10e 0e01 	add.w	lr, lr, #1
+  200238:	d950      	bls.n	2002dc <__prepare_environment+0xcc>
+  20023a:	4d2c      	ldr	r5, [pc, #176]	@ (2002ec <__prepare_environment+0xdc>)
+  20023c:	ea4f 0c5e 	mov.w	ip, lr, lsr #1
+  200240:	462b      	mov	r3, r5
+  200242:	eb05 0ccc 	add.w	ip, r5, ip, lsl #3
+  200246:	681c      	ldr	r4, [r3, #0]
+  200248:	3308      	adds	r3, #8
+  20024a:	f853 0c04 	ldr.w	r0, [r3, #-4]
+  20024e:	3208      	adds	r2, #8
+  200250:	459c      	cmp	ip, r3
+  200252:	f842 4c08 	str.w	r4, [r2, #-8]
+  200256:	f842 0c04 	str.w	r0, [r2, #-4]
+  20025a:	d1f4      	bne.n	200246 <__prepare_environment+0x36>
+  20025c:	f01e 0f01 	tst.w	lr, #1
+  200260:	d007      	beq.n	200272 <__prepare_environment+0x62>
+  200262:	f02e 0e01 	bic.w	lr, lr, #1
+  200266:	eb05 058e 	add.w	r5, r5, lr, lsl #2
+  20026a:	eb01 028e 	add.w	r2, r1, lr, lsl #2
+  20026e:	682b      	ldr	r3, [r5, #0]
+  200270:	6013      	str	r3, [r2, #0]
+  200272:	4a1f      	ldr	r2, [pc, #124]	@ (2002f0 <__prepare_environment+0xe0>)
+  200274:	491f      	ldr	r1, [pc, #124]	@ (2002f4 <__prepare_environment+0xe4>)
+  200276:	428a      	cmp	r2, r1
+  200278:	d219      	bcs.n	2002ae <__prepare_environment+0x9e>
+  20027a:	3901      	subs	r1, #1
+  20027c:	4613      	mov	r3, r2
+  20027e:	1a89      	subs	r1, r1, r2
+  200280:	088c      	lsrs	r4, r1, #2
+  200282:	2903      	cmp	r1, #3
+  200284:	f104 0401 	add.w	r4, r4, #1
+  200288:	d90f      	bls.n	2002aa <__prepare_environment+0x9a>
+  20028a:	0860      	lsrs	r0, r4, #1
+  20028c:	2100      	movs	r1, #0
+  20028e:	eb02 00c0 	add.w	r0, r2, r0, lsl #3
+  200292:	6019      	str	r1, [r3, #0]
+  200294:	3308      	adds	r3, #8
+  200296:	f843 1c04 	str.w	r1, [r3, #-4]
+  20029a:	4283      	cmp	r3, r0
+  20029c:	d1f9      	bne.n	200292 <__prepare_environment+0x82>
+  20029e:	07e3      	lsls	r3, r4, #31
+  2002a0:	d505      	bpl.n	2002ae <__prepare_environment+0x9e>
+  2002a2:	f024 0401 	bic.w	r4, r4, #1
+  2002a6:	eb02 0384 	add.w	r3, r2, r4, lsl #2
+  2002aa:	2200      	movs	r2, #0
+  2002ac:	601a      	str	r2, [r3, #0]
+  2002ae:	4a12      	ldr	r2, [pc, #72]	@ (2002f8 <__prepare_environment+0xe8>)
+  2002b0:	4c12      	ldr	r4, [pc, #72]	@ (2002fc <__prepare_environment+0xec>)
+  2002b2:	4d13      	ldr	r5, [pc, #76]	@ (200300 <__prepare_environment+0xf0>)
+  2002b4:	4b0a      	ldr	r3, [pc, #40]	@ (2002e0 <__prepare_environment+0xd0>)
+  2002b6:	6812      	ldr	r2, [r2, #0]
+  2002b8:	42ac      	cmp	r4, r5
+  2002ba:	609a      	str	r2, [r3, #8]
+  2002bc:	d004      	beq.n	2002c8 <__prepare_environment+0xb8>
+  2002be:	f854 3b04 	ldr.w	r3, [r4], #4
+  2002c2:	4798      	blx	r3
+  2002c4:	42ac      	cmp	r4, r5
+  2002c6:	d1fa      	bne.n	2002be <__prepare_environment+0xae>
+  2002c8:	4c0e      	ldr	r4, [pc, #56]	@ (200304 <__prepare_environment+0xf4>)
+  2002ca:	4d0f      	ldr	r5, [pc, #60]	@ (200308 <__prepare_environment+0xf8>)
+  2002cc:	42ac      	cmp	r4, r5
+  2002ce:	d004      	beq.n	2002da <__prepare_environment+0xca>
+  2002d0:	f854 3b04 	ldr.w	r3, [r4], #4
+  2002d4:	4798      	blx	r3
+  2002d6:	42ac      	cmp	r4, r5
+  2002d8:	d1fa      	bne.n	2002d0 <__prepare_environment+0xc0>
+  2002da:	bd38      	pop	{r3, r4, r5, pc}
+  2002dc:	4d03      	ldr	r5, [pc, #12]	@ (2002ec <__prepare_environment+0xdc>)
+  2002de:	e7c6      	b.n	20026e <__prepare_environment+0x5e>
+  2002e0:	e000ed00 	.word	0xe000ed00
+  2002e4:	20000000 	.word	0x20000000
+  2002e8:	20000004 	.word	0x20000004
+  2002ec:	00200588 	.word	0x00200588
+  2002f0:	20000004 	.word	0x20000004
+  2002f4:	20000008 	.word	0x20000008
+  2002f8:	00200000 	.word	0x00200000
+  2002fc:	00200588 	.word	0x00200588
+  200300:	00200588 	.word	0x00200588
+  200304:	00200588 	.word	0x00200588
+  200308:	00200588 	.word	0x00200588
+
+0020030c <__start>:
+  20030c:	4d06      	ldr	r5, [pc, #24]	@ (200328 <__start+0x1c>)
+  20030e:	4c07      	ldr	r4, [pc, #28]	@ (20032c <__start+0x20>)
+  200310:	b508      	push	{r3, lr}
+  200312:	f000 f835 	bl	200380 <main>
+  200316:	42ac      	cmp	r4, r5
+  200318:	d004      	beq.n	200324 <__start+0x18>
+  20031a:	f854 3b04 	ldr.w	r3, [r4], #4
+  20031e:	4798      	blx	r3
+  200320:	42ac      	cmp	r4, r5
+  200322:	d1fa      	bne.n	20031a <__start+0xe>
+  200324:	e7fe      	b.n	200324 <__start+0x18>
+  200326:	bf00      	nop
+  200328:	00200588 	.word	0x00200588
+  20032c:	00200588 	.word	0x00200588
+
+00200330 <_Z8initGpiov>:
+  200330:	4a11      	ldr	r2, [pc, #68]	@ (200378 <_Z8initGpiov+0x48>)
+  200332:	2300      	movs	r3, #0
+  200334:	6b11      	ldr	r1, [r2, #48]	@ 0x30
+  200336:	f041 0102 	orr.w	r1, r1, #2
+  20033a:	b510      	push	{r4, lr}
+  20033c:	6311      	str	r1, [r2, #48]	@ 0x30
+  20033e:	b088      	sub	sp, #32
+  200340:	6b12      	ldr	r2, [r2, #48]	@ 0x30
+  200342:	a802      	add	r0, sp, #8
+  200344:	4c0d      	ldr	r4, [pc, #52]	@ (20037c <_Z8initGpiov+0x4c>)
+  200346:	f002 0202 	and.w	r2, r2, #2
+  20034a:	9306      	str	r3, [sp, #24]
+  20034c:	9307      	str	r3, [sp, #28]
+  20034e:	9201      	str	r2, [sp, #4]
+  200350:	9a01      	ldr	r2, [sp, #4]
+  200352:	e9cd 3302 	strd	r3, r3, [sp, #8]
+  200356:	e9cd 3304 	strd	r3, r3, [sp, #16]
+  20035a:	f000 f909 	bl	200570 <LL_GPIO_StructInit>
+  20035e:	2280      	movs	r2, #128	@ 0x80
+  200360:	2301      	movs	r3, #1
+  200362:	a902      	add	r1, sp, #8
+  200364:	4620      	mov	r0, r4
+  200366:	e9cd 2302 	strd	r2, r3, [sp, #8]
+  20036a:	f000 f847 	bl	2003fc <LL_GPIO_Init>
+  20036e:	f44f 0300 	mov.w	r3, #8388608	@ 0x800000
+  200372:	61a3      	str	r3, [r4, #24]
+  200374:	b008      	add	sp, #32
+  200376:	bd10      	pop	{r4, pc}
+  200378:	40023800 	.word	0x40023800
+  20037c:	40020400 	.word	0x40020400
+
+00200380 <main>:
+  200380:	b508      	push	{r3, lr}
+  200382:	f7ff ffd5 	bl	200330 <_Z8initGpiov>
+  200386:	4b0c      	ldr	r3, [pc, #48]	@ (2003b8 <main+0x38>)
+  200388:	4a0c      	ldr	r2, [pc, #48]	@ (2003bc <main+0x3c>)
+  20038a:	681b      	ldr	r3, [r3, #0]
+  20038c:	fba2 2303 	umull	r2, r3, r2, r3
+  200390:	0c9b      	lsrs	r3, r3, #18
+  200392:	3b02      	subs	r3, #2
+  200394:	f1b3 7f80 	cmp.w	r3, #16777216	@ 0x1000000
+  200398:	d20b      	bcs.n	2003b2 <main+0x32>
+  20039a:	f04f 22e0 	mov.w	r2, #3758153728	@ 0xe000e000
+  20039e:	4808      	ldr	r0, [pc, #32]	@ (2003c0 <main+0x40>)
+  2003a0:	f04f 0cf0 	mov.w	ip, #240	@ 0xf0
+  2003a4:	2100      	movs	r1, #0
+  2003a6:	6153      	str	r3, [r2, #20]
+  2003a8:	2307      	movs	r3, #7
+  2003aa:	f880 c023 	strb.w	ip, [r0, #35]	@ 0x23
+  2003ae:	6191      	str	r1, [r2, #24]
+  2003b0:	6113      	str	r3, [r2, #16]
+  2003b2:	b662      	cpsie	i
+  2003b4:	bf00      	nop
+  2003b6:	e7fd      	b.n	2003b4 <main+0x34>
+  2003b8:	20000000 	.word	0x20000000
+  2003bc:	431bde83 	.word	0x431bde83
+  2003c0:	e000ed00 	.word	0xe000ed00
+
+002003c4 <SysTick_Handler>:
+  2003c4:	4a0a      	ldr	r2, [pc, #40]	@ (2003f0 <SysTick_Handler+0x2c>)
+  2003c6:	490b      	ldr	r1, [pc, #44]	@ (2003f4 <SysTick_Handler+0x30>)
+  2003c8:	6813      	ldr	r3, [r2, #0]
+  2003ca:	3301      	adds	r3, #1
+  2003cc:	428b      	cmp	r3, r1
+  2003ce:	dc01      	bgt.n	2003d4 <SysTick_Handler+0x10>
+  2003d0:	6013      	str	r3, [r2, #0]
+  2003d2:	4770      	bx	lr
+  2003d4:	4908      	ldr	r1, [pc, #32]	@ (2003f8 <SysTick_Handler+0x34>)
+  2003d6:	2300      	movs	r3, #0
+  2003d8:	6013      	str	r3, [r2, #0]
+  2003da:	694b      	ldr	r3, [r1, #20]
+  2003dc:	041a      	lsls	r2, r3, #16
+  2003de:	43db      	mvns	r3, r3
+  2003e0:	f402 0200 	and.w	r2, r2, #8388608	@ 0x800000
+  2003e4:	f003 0380 	and.w	r3, r3, #128	@ 0x80
+  2003e8:	4313      	orrs	r3, r2
+  2003ea:	618b      	str	r3, [r1, #24]
+  2003ec:	4770      	bx	lr
+  2003ee:	bf00      	nop
+  2003f0:	20000004 	.word	0x20000004
+  2003f4:	0003d090 	.word	0x0003d090
+  2003f8:	40020400 	.word	0x40020400
+
+002003fc <LL_GPIO_Init>:
+  2003fc:	e92d 4ff0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+  200400:	680d      	ldr	r5, [r1, #0]
+  200402:	fa95 f2a5 	rbit	r2, r5
+  200406:	2a00      	cmp	r2, #0
+  200408:	f000 8089 	beq.w	20051e <LL_GPIO_Init+0x122>
+  20040c:	fab2 f282 	clz	r2, r2
+  200410:	fa35 f302 	lsrs.w	r3, r5, r2
+  200414:	f000 8083 	beq.w	20051e <LL_GPIO_Init+0x122>
+  200418:	f04f 0c01 	mov.w	ip, #1
+  20041c:	f04f 0e03 	mov.w	lr, #3
+  200420:	43ee      	mvns	r6, r5
+  200422:	e037      	b.n	200494 <LL_GPIO_Init+0x98>
+  200424:	f8d1 8010 	ldr.w	r8, [r1, #16]
+  200428:	f8d0 900c 	ldr.w	r9, [r0, #12]
+  20042c:	fa93 f7a3 	rbit	r7, r3
+  200430:	b137      	cbz	r7, 200440 <LL_GPIO_Init+0x44>
+  200432:	fab7 f787 	clz	r7, r7
+  200436:	007f      	lsls	r7, r7, #1
+  200438:	fa0e f707 	lsl.w	r7, lr, r7
+  20043c:	ea29 0907 	bic.w	r9, r9, r7
+  200440:	fa93 f7a3 	rbit	r7, r3
+  200444:	2f00      	cmp	r7, #0
+  200446:	d06d      	beq.n	200524 <LL_GPIO_Init+0x128>
+  200448:	fab7 f787 	clz	r7, r7
+  20044c:	007f      	lsls	r7, r7, #1
+  20044e:	fa08 f807 	lsl.w	r8, r8, r7
+  200452:	2c02      	cmp	r4, #2
+  200454:	ea48 0709 	orr.w	r7, r8, r9
+  200458:	60c7      	str	r7, [r0, #12]
+  20045a:	d046      	beq.n	2004ea <LL_GPIO_Init+0xee>
+  20045c:	6807      	ldr	r7, [r0, #0]
+  20045e:	fa93 f8a3 	rbit	r8, r3
+  200462:	f1b8 0f00 	cmp.w	r8, #0
+  200466:	d007      	beq.n	200478 <LL_GPIO_Init+0x7c>
+  200468:	fab8 f888 	clz	r8, r8
+  20046c:	ea4f 0848 	mov.w	r8, r8, lsl #1
+  200470:	fa0e f808 	lsl.w	r8, lr, r8
+  200474:	ea27 0708 	bic.w	r7, r7, r8
+  200478:	fa93 f3a3 	rbit	r3, r3
+  20047c:	2b00      	cmp	r3, #0
+  20047e:	d053      	beq.n	200528 <LL_GPIO_Init+0x12c>
+  200480:	fab3 f383 	clz	r3, r3
+  200484:	005b      	lsls	r3, r3, #1
+  200486:	409c      	lsls	r4, r3
+  200488:	433c      	orrs	r4, r7
+  20048a:	6004      	str	r4, [r0, #0]
+  20048c:	3201      	adds	r2, #1
+  20048e:	fa35 f302 	lsrs.w	r3, r5, r2
+  200492:	d044      	beq.n	20051e <LL_GPIO_Init+0x122>
+  200494:	fa0c f302 	lsl.w	r3, ip, r2
+  200498:	402b      	ands	r3, r5
+  20049a:	d0f7      	beq.n	20048c <LL_GPIO_Init+0x90>
+  20049c:	684c      	ldr	r4, [r1, #4]
+  20049e:	1e67      	subs	r7, r4, #1
+  2004a0:	2f01      	cmp	r7, #1
+  2004a2:	d8bf      	bhi.n	200424 <LL_GPIO_Init+0x28>
+  2004a4:	f8d1 8008 	ldr.w	r8, [r1, #8]
+  2004a8:	f8d0 9008 	ldr.w	r9, [r0, #8]
+  2004ac:	fa93 f7a3 	rbit	r7, r3
+  2004b0:	b137      	cbz	r7, 2004c0 <LL_GPIO_Init+0xc4>
+  2004b2:	fab7 f787 	clz	r7, r7
+  2004b6:	007f      	lsls	r7, r7, #1
+  2004b8:	fa0e f707 	lsl.w	r7, lr, r7
+  2004bc:	ea29 0907 	bic.w	r9, r9, r7
+  2004c0:	fa93 f7a3 	rbit	r7, r3
+  2004c4:	2f00      	cmp	r7, #0
+  2004c6:	d04f      	beq.n	200568 <LL_GPIO_Init+0x16c>
+  2004c8:	fab7 f787 	clz	r7, r7
+  2004cc:	007f      	lsls	r7, r7, #1
+  2004ce:	fa08 f807 	lsl.w	r8, r8, r7
+  2004d2:	ea48 0709 	orr.w	r7, r8, r9
+  2004d6:	6087      	str	r7, [r0, #8]
+  2004d8:	68cf      	ldr	r7, [r1, #12]
+  2004da:	fb07 f805 	mul.w	r8, r7, r5
+  2004de:	6847      	ldr	r7, [r0, #4]
+  2004e0:	4037      	ands	r7, r6
+  2004e2:	ea47 0708 	orr.w	r7, r7, r8
+  2004e6:	6047      	str	r7, [r0, #4]
+  2004e8:	e79c      	b.n	200424 <LL_GPIO_Init+0x28>
+  2004ea:	f8d1 9014 	ldr.w	r9, [r1, #20]
+  2004ee:	fa93 f7a3 	rbit	r7, r3
+  2004f2:	b1df      	cbz	r7, 20052c <LL_GPIO_Init+0x130>
+  2004f4:	fab7 f887 	clz	r8, r7
+  2004f8:	f1b8 0f07 	cmp.w	r8, #7
+  2004fc:	dc16      	bgt.n	20052c <LL_GPIO_Init+0x130>
+  2004fe:	ea4f 0888 	mov.w	r8, r8, lsl #2
+  200502:	fa09 f708 	lsl.w	r7, r9, r8
+  200506:	f04f 090f 	mov.w	r9, #15
+  20050a:	fa09 f908 	lsl.w	r9, r9, r8
+  20050e:	f8d0 8020 	ldr.w	r8, [r0, #32]
+  200512:	ea28 0809 	bic.w	r8, r8, r9
+  200516:	ea47 0708 	orr.w	r7, r7, r8
+  20051a:	6207      	str	r7, [r0, #32]
+  20051c:	e79e      	b.n	20045c <LL_GPIO_Init+0x60>
+  20051e:	2000      	movs	r0, #0
+  200520:	e8bd 8ff0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
+  200524:	2740      	movs	r7, #64	@ 0x40
+  200526:	e792      	b.n	20044e <LL_GPIO_Init+0x52>
+  200528:	2340      	movs	r3, #64	@ 0x40
+  20052a:	e7ac      	b.n	200486 <LL_GPIO_Init+0x8a>
+  20052c:	0a1f      	lsrs	r7, r3, #8
+  20052e:	f8d0 8024 	ldr.w	r8, [r0, #36]	@ 0x24
+  200532:	fa97 faa7 	rbit	sl, r7
+  200536:	f1ba 0f00 	cmp.w	sl, #0
+  20053a:	d009      	beq.n	200550 <LL_GPIO_Init+0x154>
+  20053c:	faba fa8a 	clz	sl, sl
+  200540:	f04f 0b0f 	mov.w	fp, #15
+  200544:	ea4f 0a8a 	mov.w	sl, sl, lsl #2
+  200548:	fa0b fa0a 	lsl.w	sl, fp, sl
+  20054c:	ea28 080a 	bic.w	r8, r8, sl
+  200550:	fa97 f7a7 	rbit	r7, r7
+  200554:	b157      	cbz	r7, 20056c <LL_GPIO_Init+0x170>
+  200556:	fab7 f787 	clz	r7, r7
+  20055a:	00bf      	lsls	r7, r7, #2
+  20055c:	fa09 f907 	lsl.w	r9, r9, r7
+  200560:	ea49 0708 	orr.w	r7, r9, r8
+  200564:	6247      	str	r7, [r0, #36]	@ 0x24
+  200566:	e779      	b.n	20045c <LL_GPIO_Init+0x60>
+  200568:	2740      	movs	r7, #64	@ 0x40
+  20056a:	e7b0      	b.n	2004ce <LL_GPIO_Init+0xd2>
+  20056c:	2780      	movs	r7, #128	@ 0x80
+  20056e:	e7f5      	b.n	20055c <LL_GPIO_Init+0x160>
+
+00200570 <LL_GPIO_StructInit>:
+  200570:	2300      	movs	r3, #0
+  200572:	f64f 71ff 	movw	r1, #65535	@ 0xffff
+  200576:	2203      	movs	r2, #3
+  200578:	6103      	str	r3, [r0, #16]
+  20057a:	6143      	str	r3, [r0, #20]
+  20057c:	e9c0 1200 	strd	r1, r2, [r0]
+  200580:	e9c0 3302 	strd	r3, r3, [r0, #8]
+  200584:	4770      	bx	lr
+  200586:	bf00      	nop

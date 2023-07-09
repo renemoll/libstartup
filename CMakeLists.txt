@@ -16,6 +16,13 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+option(EXPERIMENT_TINY_INIT "Use tiny initialization implementation (EXPERIMENTAL)" ON)
+if (${EXPERIMENT_TINY_INIT})
+	add_compile_options(
+		-fno-tree-loop-distribute-patterns
+	)
+endif()
+
 #
 # Gather the toolchain configuration
 #

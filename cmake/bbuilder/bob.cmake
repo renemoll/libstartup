@@ -41,9 +41,8 @@ endif()
 message(STATUS "CMAKE_BUILD_TYPE is ${CMAKE_BUILD_TYPE}")
 
 #
-# Generate a option and version headers
+# Generate a version header
 #
-configure_file(cmake/config_options.h.in config_options.h)
 configure_file(cmake/version.h.in version.h)
 
 #
@@ -70,3 +69,8 @@ target_compile_features(bob_interface
 
 include(cmsis)
 include(stm32)
+
+#
+# Generate a option header
+#
+configure_file(cmake/config_options.h.in config_options.h)

@@ -95,8 +95,20 @@ void __prepare_environment()
 		// note: lazy stacking is enabled by default (CPU reset code)
 	}
 
-	copy_data_section();
-	zero_bss_section();
+	if constexpr (Config::Options::g_tinyInit) {
+		uint32_t* src, *dst;
+		src = &__data_src__;
+		dst = &__data_dest_start__;
+		while (dst < &__data_dest_end__)
+			*dst++ = *src++;
+
+		dst = &__bss_start__;
+		while (dst < &__bss_end__)
+			*dst++ = 0;
+	} else {
+		copy_data_section();
+		zero_bss_section();
+	}
 
 	SCB->VTOR = __vectors_start__;
 

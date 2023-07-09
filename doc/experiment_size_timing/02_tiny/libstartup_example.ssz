@@ -1,0 +1,14 @@
+/work/build/stm32-release/example/libstartup_example.elf  :
+section            size         addr
+.text             0x588     0x200000
+.rodata             0x0     0x200588
+.data               0x4   0x20000000
+.gnu_build_id      0x20     0x20058c
+.bss                0x4   0x20000004
+._user_stack      0x400   0x20000008
+._user_heap       0x200   0x20000408
+.comment           0x55          0x0
+.ARM.attributes    0x30          0x0
+Total             0xc35
+
+

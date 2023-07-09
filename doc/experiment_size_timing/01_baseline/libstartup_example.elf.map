@@ -1,0 +1,526 @@
+Archive member included to satisfy reference by file (symbol)
+
+libstm32_hal.a(stm32f7xx_ll_gpio.c.obj)
+                              example/CMakeFiles/libstartup_example.dir/main.cpp.obj (LL_GPIO_Init)
+/work/external/src/arm-gnu-toolchain-12.2.mpacbti-rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(libc_a-memset.o)
+                              src/CMakeFiles/cortex_m.dir/system.cpp.obj (memset)
+/work/external/src/arm-gnu-toolchain-12.2.mpacbti-rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(libc_a-memcpy.o)
+                              src/CMakeFiles/cortex_m.dir/system.cpp.obj (memcpy)
+
+Discarded input sections
+
+ .text          0x00000000        0x0 src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+ .data          0x00000000        0x0 src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+ .bss           0x00000000        0x0 src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+ .text          0x00000000        0x0 src/CMakeFiles/cortex_m.dir/reset_handler.s.obj
+ .data          0x00000000        0x0 src/CMakeFiles/cortex_m.dir/reset_handler.s.obj
+ .bss           0x00000000        0x0 src/CMakeFiles/cortex_m.dir/reset_handler.s.obj
+ .text          0x00000000        0x0 src/CMakeFiles/cortex_m.dir/system.cpp.obj
+ .data          0x00000000        0x0 src/CMakeFiles/cortex_m.dir/system.cpp.obj
+ .bss           0x00000000        0x0 src/CMakeFiles/cortex_m.dir/system.cpp.obj
+ .text          0x00000000        0x0 example/CMakeFiles/libstartup_example.dir/main.cpp.obj
+ .data          0x00000000        0x0 example/CMakeFiles/libstartup_example.dir/main.cpp.obj
+ .bss           0x00000000        0x0 example/CMakeFiles/libstartup_example.dir/main.cpp.obj
+ .text          0x00000000        0x0 libstm32_hal.a(stm32f7xx_ll_gpio.c.obj)
+ .data          0x00000000        0x0 libstm32_hal.a(stm32f7xx_ll_gpio.c.obj)
+ .bss           0x00000000        0x0 libstm32_hal.a(stm32f7xx_ll_gpio.c.obj)
+ .text.LL_GPIO_DeInit
+                0x00000000      0x168 libstm32_hal.a(stm32f7xx_ll_gpio.c.obj)
+ .text          0x00000000        0x0 /work/external/src/arm-gnu-toolchain-12.2.mpacbti-rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(libc_a-memset.o)
+ .data          0x00000000        0x0 /work/external/src/arm-gnu-toolchain-12.2.mpacbti-rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(libc_a-memset.o)
+ .bss           0x00000000        0x0 /work/external/src/arm-gnu-toolchain-12.2.mpacbti-rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(libc_a-memset.o)
+ .data          0x00000000        0x0 /work/external/src/arm-gnu-toolchain-12.2.mpacbti-rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(libc_a-memcpy.o)
+ .bss           0x00000000        0x0 /work/external/src/arm-gnu-toolchain-12.2.mpacbti-rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(libc_a-memcpy.o)
+ .ARM.extab     0x00000000        0x0 /work/external/src/arm-gnu-toolchain-12.2.mpacbti-rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(libc_a-memcpy.o)
+ .eh_frame      0x00000000       0x2c /work/external/src/arm-gnu-toolchain-12.2.mpacbti-rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(libc_a-memcpy.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+ITCMRAM          0x00000000         0x00004000         xrw
+FLASH            0x00200000         0x00200000         xr
+DTCMRAM          0x20000000         0x00020000         xrw
+RAM              0x20020000         0x00060000         xrw
+BKPSRAM          0x40024000         0x00001000         rw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+LOAD src/CMakeFiles/cortex_m.dir/reset_handler.s.obj
+LOAD src/CMakeFiles/cortex_m.dir/system.cpp.obj
+LOAD example/CMakeFiles/libstartup_example.dir/main.cpp.obj
+LOAD libstm32_hal.a
+LOAD /work/external/src/arm-gnu-toolchain-12.2.mpacbti-rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libstdc++.a
+LOAD /work/external/src/arm-gnu-toolchain-12.2.mpacbti-rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libm.a
+START GROUP
+LOAD /work/external/src/arm-gnu-toolchain-12.2.mpacbti-rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+dp/hard/libgcc.a
+LOAD /work/external/src/arm-gnu-toolchain-12.2.mpacbti-rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a
+END GROUP
+START GROUP
+LOAD /work/external/src/arm-gnu-toolchain-12.2.mpacbti-rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+dp/hard/libgcc.a
+LOAD /work/external/src/arm-gnu-toolchain-12.2.mpacbti-rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a
+LOAD /work/external/src/arm-gnu-toolchain-12.2.mpacbti-rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libnosys.a
+END GROUP
+                0x00000200                        __heap_size__ = 0x200
+                0x00000400                        __stack_size__ = 0x400
+
+.text           0x00200000      0x6e8
+ FILL mask 0xff
+                0x00200000                        __vectors_start__ = ABSOLUTE (.)
+ *(.isr_vector)
+ .isr_vector    0x00200000      0x1f8 src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+                0x00200000                vectorTable
+ *(.isr_vector.*)
+ *(.text)
+ .text          0x002001f8      0x134 /work/external/src/arm-gnu-toolchain-12.2.mpacbti-rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(libc_a-memcpy.o)
+                0x002001f8                memcpy
+ *(.text.*)
+ .text.UndefinedHandler
+                0x0020032c        0x4 src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+                0x0020032c                RTC_Alarm_IRQHandler
+                0x0020032c                HASH_RNG_IRQHandler
+                0x0020032c                EXTI2_IRQHandler
+                0x0020032c                TIM8_CC_IRQHandler
+                0x0020032c                UndefinedHandler
+                0x0020032c                DebugMon_Handler
+                0x0020032c                UART8_IRQHandler
+                0x0020032c                SPI4_IRQHandler
+                0x0020032c                TIM1_CC_IRQHandler
+                0x0020032c                DMA2_Stream5_IRQHandler
+                0x0020032c                HardFault_Handler
+                0x0020032c                JPEG_IRQHandler
+                0x0020032c                DMA1_Stream5_IRQHandler
+                0x0020032c                CAN3_RX1_IRQHandler
+                0x0020032c                PVD_IRQHandler
+                0x0020032c                TAMP_STAMP_IRQHandler
+                0x0020032c                PendSV_Handler
+                0x0020032c                NMI_Handler
+                0x0020032c                CAN2_RX1_IRQHandler
+                0x0020032c                EXTI3_IRQHandler
+                0x0020032c                TIM8_TRG_COM_TIM14_IRQHandler
+                0x0020032c                DFSDM1_FLT1_IRQHandler
+                0x0020032c                TIM1_UP_TIM10_IRQHandler
+                0x0020032c                TIM8_UP_TIM13_IRQHandler
+                0x0020032c                I2C3_ER_IRQHandler
+                0x0020032c                DFSDM1_FLT2_IRQHandler
+                0x0020032c                EXTI0_IRQHandler
+                0x0020032c                I2C2_EV_IRQHandler
+                0x0020032c                DMA1_Stream2_IRQHandler
+                0x0020032c                CAN1_RX0_IRQHandler
+                0x0020032c                FPU_IRQHandler
+                0x0020032c                OTG_HS_WKUP_IRQHandler
+                0x0020032c                CAN3_SCE_IRQHandler
+                0x0020032c                UsageFault_Handler
+                0x0020032c                LTDC_ER_IRQHandler
+                0x0020032c                CAN2_SCE_IRQHandler
+                0x0020032c                DMA2_Stream2_IRQHandler
+                0x0020032c                SPI1_IRQHandler
+                0x0020032c                TIM6_DAC_IRQHandler
+                0x0020032c                TIM1_BRK_TIM9_IRQHandler
+                0x0020032c                DCMI_IRQHandler
+                0x0020032c                CAN2_RX0_IRQHandler
+                0x0020032c                DMA2_Stream3_IRQHandler
+                0x0020032c                SAI2_IRQHandler
+                0x0020032c                DFSDM1_FLT3_IRQHandler
+                0x0020032c                USART6_IRQHandler
+                0x0020032c                CAN3_RX0_IRQHandler
+                0x0020032c                USART3_IRQHandler
+                0x0020032c                CRYP_IRQHandler
+                0x0020032c                CAN1_RX1_IRQHandler
+                0x0020032c                UART5_IRQHandler
+                0x0020032c                DMA2_Stream0_IRQHandler
+                0x0020032c                TIM4_IRQHandler
+                0x0020032c                QUADSPI_IRQHandler
+                0x0020032c                I2C1_EV_IRQHandler
+                0x0020032c                DMA1_Stream6_IRQHandler
+                0x0020032c                DMA1_Stream1_IRQHandler
+                0x0020032c                UART4_IRQHandler
+                0x0020032c                TIM3_IRQHandler
+                0x0020032c                RCC_IRQHandler
+                0x0020032c                TIM8_BRK_TIM12_IRQHandler
+                0x0020032c                CEC_IRQHandler
+                0x0020032c                EXTI15_10_IRQHandler
+                0x0020032c                ADC_IRQHandler
+                0x0020032c                DMA1_Stream7_IRQHandler
+                0x0020032c                SPI5_IRQHandler
+                0x0020032c                TIM7_IRQHandler
+                0x0020032c                SDMMC1_IRQHandler
+                0x0020032c                CAN2_TX_IRQHandler
+                0x0020032c                TIM5_IRQHandler
+                0x0020032c                DMA2_Stream7_IRQHandler
+                0x0020032c                I2C3_EV_IRQHandler
+                0x0020032c                EXTI9_5_IRQHandler
+                0x0020032c                RTC_WKUP_IRQHandler
+                0x0020032c                LTDC_IRQHandler
+                0x0020032c                ETH_WKUP_IRQHandler
+                0x0020032c                SPDIF_RX_IRQHandler
+                0x0020032c                SPI2_IRQHandler
+                0x0020032c                OTG_HS_EP1_IN_IRQHandler
+                0x0020032c                MemManage_Handler
+                0x0020032c                DMA1_Stream0_IRQHandler
+                0x0020032c                CAN1_TX_IRQHandler
+                0x0020032c                SVC_Handler
+                0x0020032c                EXTI4_IRQHandler
+                0x0020032c                RNG_IRQHandler
+                0x0020032c                DSI_IRQHandler
+                0x0020032c                ETH_IRQHandler
+                0x0020032c                OTG_HS_EP1_OUT_IRQHandler
+                0x0020032c                WWDG_IRQHandler
+                0x0020032c                SPI6_IRQHandler
+                0x0020032c                I2C4_EV_IRQHandler
+                0x0020032c                MDIOS_IRQHandler
+                0x0020032c                CAN3_TX_IRQHandler
+                0x0020032c                TIM2_IRQHandler
+                0x0020032c                OTG_FS_WKUP_IRQHandler
+                0x0020032c                TIM1_TRG_COM_TIM11_IRQHandler
+                0x0020032c                OTG_HS_IRQHandler
+                0x0020032c                DMA2D_IRQHandler
+                0x0020032c                EXTI1_IRQHandler
+                0x0020032c                SDMMC2_IRQHandler
+                0x0020032c                UART7_IRQHandler
+                0x0020032c                USART2_IRQHandler
+                0x0020032c                DFSDM1_FLT0_IRQHandler
+                0x0020032c                I2C2_ER_IRQHandler
+                0x0020032c                DMA2_Stream1_IRQHandler
+                0x0020032c                CAN1_SCE_IRQHandler
+                0x0020032c                FLASH_IRQHandler
+                0x0020032c                DMA2_Stream4_IRQHandler
+                0x0020032c                BusFault_Handler
+                0x0020032c                USART1_IRQHandler
+                0x0020032c                OTG_FS_IRQHandler
+                0x0020032c                SPI3_IRQHandler
+                0x0020032c                DMA1_Stream4_IRQHandler
+                0x0020032c                I2C1_ER_IRQHandler
+                0x0020032c                FMC_IRQHandler
+                0x0020032c                LPTIM1_IRQHandler
+                0x0020032c                I2C4_ER_IRQHandler
+                0x0020032c                DMA2_Stream6_IRQHandler
+                0x0020032c                SAI1_IRQHandler
+                0x0020032c                DMA1_Stream3_IRQHandler
+ .text.ResetHandler
+                0x00200330       0x10 src/CMakeFiles/cortex_m.dir/reset_handler.s.obj
+                0x00200330                ResetHandler
+ .text.__prepare_environment
+                0x00200340       0x88 src/CMakeFiles/cortex_m.dir/system.cpp.obj
+                0x00200340                __prepare_environment
+ .text.__start  0x002003c8       0x24 src/CMakeFiles/cortex_m.dir/system.cpp.obj
+                0x002003c8                __start
+ .text._Z8initGpiov
+                0x002003ec       0x50 example/CMakeFiles/libstartup_example.dir/main.cpp.obj
+                0x002003ec                initGpio()
+ .text.startup.main
+                0x0020043c       0x44 example/CMakeFiles/libstartup_example.dir/main.cpp.obj
+                0x0020043c                main
+ .text.SysTick_Handler
+                0x00200480       0x38 example/CMakeFiles/libstartup_example.dir/main.cpp.obj
+                0x00200480                SysTick_Handler
+ .text.LL_GPIO_Init
+                0x002004b8      0x174 libstm32_hal.a(stm32f7xx_ll_gpio.c.obj)
+                0x002004b8                LL_GPIO_Init
+ .text.LL_GPIO_StructInit
+                0x0020062c       0x18 libstm32_hal.a(stm32f7xx_ll_gpio.c.obj)
+                0x0020062c                LL_GPIO_StructInit
+ .text.memset   0x00200644       0xa4 /work/external/src/arm-gnu-toolchain-12.2.mpacbti-rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(libc_a-memset.o)
+                0x00200644                memset
+ *(.glue_7)
+ .glue_7        0x002006e8        0x0 linker stubs
+ *(.glue_7t)
+ .glue_7t       0x002006e8        0x0 linker stubs
+ *(.eh_frame)
+
+.vfp11_veneer   0x002006e8        0x0
+ .vfp11_veneer  0x002006e8        0x0 linker stubs
+
+.v4_bx          0x002006e8        0x0
+ .v4_bx         0x002006e8        0x0 linker stubs
+
+.iplt           0x002006e8        0x0
+ .iplt          0x002006e8        0x0 src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+
+.rodata         0x002006e8        0x0
+ *(.rodata)
+ *(.rodata*)
+                0x002006e8                        . = ALIGN (0x4)
+ *(.init)
+                0x002006e8                        . = ALIGN (0x4)
+ *(.fini)
+                0x002006e8                        . = ALIGN (0x4)
+                0x002006e8                        __preinit_array_start__ = .
+ *(.preinit_array)
+ *(.preinit_array.*)
+                0x002006e8                        __preinit_array_end__ = .
+                0x002006e8                        . = ALIGN (0x4)
+                0x002006e8                        __init_array_start__ = .
+ *(.init_array)
+ *(.init_array.*)
+                0x002006e8                        __init_array_end__ = .
+                0x002006e8                        . = ALIGN (0x4)
+                0x002006e8                        __fini_array_start__ = .
+ *(.fini_array)
+ *(.fini_array.*)
+                0x002006e8                        __fini_array_end__ = .
+
+.ARM.extab
+ *(.ARM.extab*)
+ *(.gnu.linkonce.armextab.*)
+
+.ARM            0x002006e8        0x8
+                0x002006e8                        __exidx_start = .
+ *(.ARM.exidx*)
+ .ARM.exidx     0x002006e8        0x8 /work/external/src/arm-gnu-toolchain-12.2.mpacbti-rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(libc_a-memcpy.o)
+ *(.gnu.linkonce.armexidx.*)
+                0x002006f0                        __exidx_end = .
+
+.data           0x20000000        0x4 load address 0x002006f0
+                0x20000000                        . = ALIGN (0x4)
+                0x20000000                        __data_dest_start__ = .
+ *(.data)
+ *(.data*)
+ .data.SystemCoreClock
+                0x20000000        0x4 example/CMakeFiles/libstartup_example.dir/main.cpp.obj
+                0x20000000                SystemCoreClock
+                0x20000004                        . = ALIGN (0x4)
+                0x20000004                        __data_dest_end__ = .
+                0x002006f0                        __data_src__ = LOADADDR (.data)
+
+.igot.plt       0x20000004        0x0 load address 0x002006f4
+ .igot.plt      0x20000004        0x0 src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+
+.gnu_build_id   0x002006f4       0x20
+                [!provide]                        PROVIDE (g_note_build_id = .)
+ *(.note.gnu.build-id)
+ .note.gnu.build-id
+                0x002006f4       0x20 linker stubs
+
+.rel.dyn        0x00200714        0x0
+ .rel.iplt      0x00200714        0x0 src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+
+.bss            0x20000004        0x4
+                0x20000004                        . = ALIGN (0x4)
+                0x20000004                        __bss_start__ = .
+ *(.bss)
+ *(.bss*)
+ .bss._ZZ15SysTick_HandlerE5ticks
+                0x20000004        0x4 example/CMakeFiles/libstartup_example.dir/main.cpp.obj
+                0x20000008                        . = ALIGN (0x4)
+                0x20000008                        __bss_end__ = .
+
+._user_stack    0x20000008      0x400
+                0x20000008                        . = ALIGN (0x8)
+                0x20000008                        __stack_start__ = .
+                0x20000408                        . = (. + __stack_size__)
+ *fill*         0x20000008      0x400 
+                0x20000408                        . = ALIGN (0x8)
+                0x20000408                        __stack_end__ = .
+                0x20000408                        __stack_top__ = (LOADADDR (._user_stack) + __stack_size__)
+
+._user_heap     0x20000408      0x200
+                0x20000408                        . = ALIGN (0x8)
+                0x20000408                        __heap_start__ = .
+                0x20000608                        . = (. + __heap_size__)
+ *fill*         0x20000408      0x200 
+                0x20000608                        . = ALIGN (0x8)
+                0x20000608                        __heap_end__ = .
+
+/DISCARD/
+ libc.a(*)
+ libm.a(*)
+ libgcc.a(*)
+OUTPUT(example/libstartup_example.elf elf32-littlearm)
+LOAD linker stubs
+LOAD /work/external/src/arm-gnu-toolchain-12.2.mpacbti-rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a
+LOAD /work/external/src/arm-gnu-toolchain-12.2.mpacbti-rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libm.a
+LOAD /work/external/src/arm-gnu-toolchain-12.2.mpacbti-rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+dp/hard/libgcc.a
+
+.comment        0x00000000       0x55
+ .comment       0x00000000       0x55 src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+                                 0x56 (size before relaxing)
+ .comment       0x00000055       0x56 src/CMakeFiles/cortex_m.dir/system.cpp.obj
+ .comment       0x00000055       0x56 example/CMakeFiles/libstartup_example.dir/main.cpp.obj
+ .comment       0x00000055       0x56 libstm32_hal.a(stm32f7xx_ll_gpio.c.obj)
+
+.ARM.attributes
+                0x00000000       0x30
+ .ARM.attributes
+                0x00000000       0x32 src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+ .ARM.attributes
+                0x00000032       0x1e src/CMakeFiles/cortex_m.dir/reset_handler.s.obj
+ .ARM.attributes
+                0x00000050       0x32 src/CMakeFiles/cortex_m.dir/system.cpp.obj
+ .ARM.attributes
+                0x00000082       0x32 example/CMakeFiles/libstartup_example.dir/main.cpp.obj
+ .ARM.attributes
+                0x000000b4       0x32 libstm32_hal.a(stm32f7xx_ll_gpio.c.obj)
+ .ARM.attributes
+                0x000000e6       0x32 /work/external/src/arm-gnu-toolchain-12.2.mpacbti-rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(libc_a-memset.o)
+ .ARM.attributes
+                0x00000118       0x1e /work/external/src/arm-gnu-toolchain-12.2.mpacbti-rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(libc_a-memcpy.o)
+
+.debug_frame    0x00000000       0x2c
+ .debug_frame   0x00000000       0x2c /work/external/src/arm-gnu-toolchain-12.2.mpacbti-rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(libc_a-memset.o)
+
+.debug_line_str
+                0x00000000       0xec
+ .debug_line_str
+                0x00000000       0xec /work/external/src/arm-gnu-toolchain-12.2.mpacbti-rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(libc_a-memcpy.o)
+
+Cross Reference Table
+
+Symbol                                            File
+ADC_IRQHandler                                    src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+BusFault_Handler                                  src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+CAN1_RX0_IRQHandler                               src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+CAN1_RX1_IRQHandler                               src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+CAN1_SCE_IRQHandler                               src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+CAN1_TX_IRQHandler                                src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+CAN2_RX0_IRQHandler                               src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+CAN2_RX1_IRQHandler                               src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+CAN2_SCE_IRQHandler                               src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+CAN2_TX_IRQHandler                                src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+CAN3_RX0_IRQHandler                               src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+CAN3_RX1_IRQHandler                               src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+CAN3_SCE_IRQHandler                               src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+CAN3_TX_IRQHandler                                src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+CEC_IRQHandler                                    src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+CRYP_IRQHandler                                   src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+DCMI_IRQHandler                                   src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+DFSDM1_FLT0_IRQHandler                            src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+DFSDM1_FLT1_IRQHandler                            src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+DFSDM1_FLT2_IRQHandler                            src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+DFSDM1_FLT3_IRQHandler                            src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+DMA1_Stream0_IRQHandler                           src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+DMA1_Stream1_IRQHandler                           src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+DMA1_Stream2_IRQHandler                           src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+DMA1_Stream3_IRQHandler                           src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+DMA1_Stream4_IRQHandler                           src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+DMA1_Stream5_IRQHandler                           src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+DMA1_Stream6_IRQHandler                           src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+DMA1_Stream7_IRQHandler                           src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+DMA2D_IRQHandler                                  src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+DMA2_Stream0_IRQHandler                           src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+DMA2_Stream1_IRQHandler                           src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+DMA2_Stream2_IRQHandler                           src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+DMA2_Stream3_IRQHandler                           src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+DMA2_Stream4_IRQHandler                           src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+DMA2_Stream5_IRQHandler                           src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+DMA2_Stream6_IRQHandler                           src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+DMA2_Stream7_IRQHandler                           src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+DSI_IRQHandler                                    src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+DebugMon_Handler                                  src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+ETH_IRQHandler                                    src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+ETH_WKUP_IRQHandler                               src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+EXTI0_IRQHandler                                  src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+EXTI15_10_IRQHandler                              src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+EXTI1_IRQHandler                                  src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+EXTI2_IRQHandler                                  src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+EXTI3_IRQHandler                                  src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+EXTI4_IRQHandler                                  src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+EXTI9_5_IRQHandler                                src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+FLASH_IRQHandler                                  src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+FMC_IRQHandler                                    src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+FPU_IRQHandler                                    src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+HASH_RNG_IRQHandler                               src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+HardFault_Handler                                 src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+I2C1_ER_IRQHandler                                src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+I2C1_EV_IRQHandler                                src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+I2C2_ER_IRQHandler                                src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+I2C2_EV_IRQHandler                                src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+I2C3_ER_IRQHandler                                src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+I2C3_EV_IRQHandler                                src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+I2C4_ER_IRQHandler                                src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+I2C4_EV_IRQHandler                                src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+JPEG_IRQHandler                                   src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+LL_GPIO_DeInit                                    libstm32_hal.a(stm32f7xx_ll_gpio.c.obj)
+LL_GPIO_Init                                      libstm32_hal.a(stm32f7xx_ll_gpio.c.obj)
+                                                  example/CMakeFiles/libstartup_example.dir/main.cpp.obj
+LL_GPIO_StructInit                                libstm32_hal.a(stm32f7xx_ll_gpio.c.obj)
+                                                  example/CMakeFiles/libstartup_example.dir/main.cpp.obj
+LPTIM1_IRQHandler                                 src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+LTDC_ER_IRQHandler                                src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+LTDC_IRQHandler                                   src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+MDIOS_IRQHandler                                  src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+MemManage_Handler                                 src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+NMI_Handler                                       src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+OTG_FS_IRQHandler                                 src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+OTG_FS_WKUP_IRQHandler                            src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+OTG_HS_EP1_IN_IRQHandler                          src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+OTG_HS_EP1_OUT_IRQHandler                         src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+OTG_HS_IRQHandler                                 src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+OTG_HS_WKUP_IRQHandler                            src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+PVD_IRQHandler                                    src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+PendSV_Handler                                    src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+QUADSPI_IRQHandler                                src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+RCC_IRQHandler                                    src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+RNG_IRQHandler                                    src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+RTC_Alarm_IRQHandler                              src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+RTC_WKUP_IRQHandler                               src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+ResetHandler                                      src/CMakeFiles/cortex_m.dir/reset_handler.s.obj
+                                                  src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+SAI1_IRQHandler                                   src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+SAI2_IRQHandler                                   src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+SDMMC1_IRQHandler                                 src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+SDMMC2_IRQHandler                                 src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+SPDIF_RX_IRQHandler                               src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+SPI1_IRQHandler                                   src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+SPI2_IRQHandler                                   src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+SPI3_IRQHandler                                   src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+SPI4_IRQHandler                                   src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+SPI5_IRQHandler                                   src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+SPI6_IRQHandler                                   src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+SVC_Handler                                       src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+SysTick_Handler                                   example/CMakeFiles/libstartup_example.dir/main.cpp.obj
+                                                  src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+SystemCoreClock                                   example/CMakeFiles/libstartup_example.dir/main.cpp.obj
+TAMP_STAMP_IRQHandler                             src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+TIM1_BRK_TIM9_IRQHandler                          src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+TIM1_CC_IRQHandler                                src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+TIM1_TRG_COM_TIM11_IRQHandler                     src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+TIM1_UP_TIM10_IRQHandler                          src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+TIM2_IRQHandler                                   src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+TIM3_IRQHandler                                   src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+TIM4_IRQHandler                                   src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+TIM5_IRQHandler                                   src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+TIM6_DAC_IRQHandler                               src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+TIM7_IRQHandler                                   src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+TIM8_BRK_TIM12_IRQHandler                         src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+TIM8_CC_IRQHandler                                src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+TIM8_TRG_COM_TIM14_IRQHandler                     src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+TIM8_UP_TIM13_IRQHandler                          src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+UART4_IRQHandler                                  src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+UART5_IRQHandler                                  src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+UART7_IRQHandler                                  src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+UART8_IRQHandler                                  src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+USART1_IRQHandler                                 src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+USART2_IRQHandler                                 src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+USART3_IRQHandler                                 src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+USART6_IRQHandler                                 src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+UndefinedHandler                                  src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+UsageFault_Handler                                src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+WWDG_IRQHandler                                   src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+__bss_end__                                       src/CMakeFiles/cortex_m.dir/system.cpp.obj
+__bss_start__                                     src/CMakeFiles/cortex_m.dir/system.cpp.obj
+__data_dest_end__                                 src/CMakeFiles/cortex_m.dir/system.cpp.obj
+__data_dest_start__                               src/CMakeFiles/cortex_m.dir/system.cpp.obj
+__data_src__                                      src/CMakeFiles/cortex_m.dir/system.cpp.obj
+__fini_array_end__                                src/CMakeFiles/cortex_m.dir/system.cpp.obj
+__fini_array_start__                              src/CMakeFiles/cortex_m.dir/system.cpp.obj
+__init_array_end__                                src/CMakeFiles/cortex_m.dir/system.cpp.obj
+__init_array_start__                              src/CMakeFiles/cortex_m.dir/system.cpp.obj
+__preinit_array_end__                             src/CMakeFiles/cortex_m.dir/system.cpp.obj
+__preinit_array_start__                           src/CMakeFiles/cortex_m.dir/system.cpp.obj
+__prepare_environment                             src/CMakeFiles/cortex_m.dir/system.cpp.obj
+                                                  src/CMakeFiles/cortex_m.dir/reset_handler.s.obj
+__stack_top__                                     src/CMakeFiles/cortex_m.dir/reset_handler.s.obj
+__start                                           src/CMakeFiles/cortex_m.dir/system.cpp.obj
+                                                  src/CMakeFiles/cortex_m.dir/reset_handler.s.obj
+__vectors_start__                                 src/CMakeFiles/cortex_m.dir/system.cpp.obj
+                                                  src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
+initGpio()                                        example/CMakeFiles/libstartup_example.dir/main.cpp.obj
+main                                              example/CMakeFiles/libstartup_example.dir/main.cpp.obj
+                                                  src/CMakeFiles/cortex_m.dir/system.cpp.obj
+memcpy                                            /work/external/src/arm-gnu-toolchain-12.2.mpacbti-rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(libc_a-memcpy.o)
+                                                  src/CMakeFiles/cortex_m.dir/system.cpp.obj
+memset                                            /work/external/src/arm-gnu-toolchain-12.2.mpacbti-rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(libc_a-memset.o)
+                                                  src/CMakeFiles/cortex_m.dir/system.cpp.obj
+vectorTable                                       src/stm32f7/CMakeFiles/stm32_f7.dir/vector_table.cpp.obj
