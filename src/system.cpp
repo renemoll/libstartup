@@ -92,7 +92,7 @@ void __prepare_environment()
 {
 	if constexpr (Config::Options::Mcu::g_enableFpu) {
 		SCB->CPACR |= (0xF < 20);
-		// todo: lazy stacking?
+		// note: lazy stacking is enabled by default (CPU reset code)
 	}
 
 	copy_data_section();
