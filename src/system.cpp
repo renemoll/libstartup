@@ -54,6 +54,8 @@ extern uint32_t __data_src__;
 extern uint32_t __bss_start__;
 extern uint32_t __bss_end__;
 
+extern uint32_t __vectors_start__;
+
 using InitFunction = std::add_pointer<void()>::type;
 extern InitFunction __preinit_array_start__;
 extern InitFunction __preinit_array_end__;
@@ -93,19 +95,15 @@ void __prepare_environment()
 		// todo: lazy stacking?
 	}
 
-	/*
-	 * Copy from FLASH to RAM - data section
-	 * Fill bss
-	 * Call constructors
-	 */
 	copy_data_section();
 	zero_bss_section();
 
-//	_init();
+	SCB->VTOR = __vectors_start__;
 
-	// todo: set VTOR?
 	// todo: clear stack/heap
 	// todo: invalidate caches
+
+//	_init();
 
 	table_call(&__preinit_array_start__, &__preinit_array_end__);
 	table_call(&__init_array_start__, &__init_array_end__);
