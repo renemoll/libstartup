@@ -143,6 +143,8 @@ def container_command(target, cwd):
 	elif target == BuildTarget.Stm32:
 		return ["docker",
 			"run",
+			"--security-opt",
+			"seccomp=unconfined",
 			"--rm",
 			"-v", "{}:/work/".format(cwd),
 			"renemoll/builder_arm_gcc"]

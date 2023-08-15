@@ -9,3 +9,7 @@ Simple and explainatory start-up code for STM32(F7).
 
 CMAKE:
 * BUILD_INTERFACE?
+
+# Build
+
+> python ./build.py build stm32 release
