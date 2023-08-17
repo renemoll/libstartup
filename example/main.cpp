@@ -4,8 +4,10 @@
 #include <stm32f7xx_ll_bus.h>
 #include <stm32f7xx_ll_gpio.h>
 
+#ifndef SYS_CORE_CLK
 //! \todo LL API
 uint32_t SystemCoreClock = 16000000;
+#endif
 
 void initGpio()
 {
