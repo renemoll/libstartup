@@ -6,8 +6,8 @@ OUTPUT_FORMAT(elf32-littlearm)
 /*
  * Heap and stack size to verify if all fits into RAM.
  */
-__heap_size__ = 0x200;
-__stack_size__ = 0x400;
+__heap_size__ = 0x100;
+__stack_size__ = 0x100;
 
 SECTIONS
 {
@@ -141,6 +141,17 @@ SECTIONS
 		__bss_end__ = .;
 	} >DTCMRAM
 
+	._user_heap (NOLOAD) : ALIGN(8)
+	{
+		. = ALIGN(8);
+		__heap_start__ = .;
+
+		. = . + __heap_size__;
+
+		. = ALIGN(8);
+		__heap_end__ = .;
+	} >DTCMRAM
+
 	/*
 	 * Stack and heap sections to verify that there is enough RAM left available.
 	 */
@@ -155,17 +166,6 @@ SECTIONS
 		__stack_end__ = .;
 	} >DTCMRAM
 	__stack_top__ = LOADADDR(._user_stack) + __stack_size__;
-
-	._user_heap (NOLOAD) : ALIGN(8)
-	{
-		. = ALIGN(8);
-		__heap_start__ = .;
-
-		. = . + __heap_size__;
-
-		. = ALIGN(8);
-		__heap_end__ = .;
-	} >DTCMRAM
 
 	/*
 	 * Remove debug information from the standard libraries.
