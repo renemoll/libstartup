@@ -39,7 +39,7 @@ set(ARM_API
 
 add_compile_options(
 	${ARM_API}
-	# --specs=nano.specs			# newlib nano.
+	--specs=nosys.specs				# Use stubs for C syscalls.
 	-ffunction-sections				# Place each function into it's own section.
 	-fdata-sections					# Place each data element into it's own section.
 )
@@ -47,10 +47,8 @@ add_compile_options(
 add_link_options(
 	${ARM_API}
 	-nostartfiles
-	# -nostdlib
-	# --specs=nano.specs
+	-nostdlib
 	--specs=nosys.specs				# Use stubs for C syscalls.
-	# -–specs rdimon.specs			# Enable semihosting.
 	LINKER:--gc-sections			# Garbage collection using the unique function and data sections.
 	LINKER:--build-id=uuid			# Generate a unique identiefier for each build and store it in a specific section (.note.gnu.build-id).
 	LINKER:--cref					# Generate a cross reference table in the MAP file, listing symbols and their source file(s).
