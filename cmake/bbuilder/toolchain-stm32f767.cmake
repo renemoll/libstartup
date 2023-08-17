@@ -27,6 +27,9 @@ set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 #
 # Cortex-M7 specific compiler configuration
 #
+# Note: specific settings are configurable, hence are defined in
+# `bob_options.cmake`. For example: `mfloat-abi`
+#
 set(ARM_API
 	-mcpu=cortex-m7					# ARM Cortex-M7 CPU.
 	-mfpu=fpv5-d16					# FPU use FPv5 instructions.
@@ -39,7 +42,6 @@ add_compile_options(
 	# --specs=nano.specs			# newlib nano.
 	-ffunction-sections				# Place each function into it's own section.
 	-fdata-sections					# Place each data element into it's own section.
-	$<$<CONFIG:DEBUG>:-gdwarf-5>	# Generate debug information in DWARF format.
 )
 
 add_link_options(
