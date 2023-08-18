@@ -66,9 +66,13 @@ list(REMOVE_ITEM libstartup_st_example_LINK_OPTIONS "-nostdlib")
 list(REMOVE_ITEM libstartup_st_example_LINK_OPTIONS "--specs=nosys.specs")
 list(REMOVE_ITEM libstartup_st_example_LINK_OPTIONS "LINKER:--build-id=uuid")
 set_target_properties(libstartup_st_example PROPERTIES LINK_OPTIONS "${libstartup_st_example_LINK_OPTIONS}")
+target_compile_options(libstartup_st_example
+	PUBLIC
+		--specs=nano.specs
+)
 target_link_options(libstartup_st_example
 	PUBLIC
-	--specs=nano.specs
+		--specs=nano.specs
 )
 target_link_libraries(libstartup_st_example
 	PRIVATE
@@ -79,3 +83,39 @@ target_link_libraries(libstartup_st_example
 
 set(LINKER_SCRIPTS ${PROJECT_SOURCE_DIR}/src/st/STM32F767ZITx_FLASH.ld)
 bob_firmware_image(libstartup_st_example)
+
+#
+# gloss
+#
+
+add_executable(libstartup_gloss_example
+	main.cpp
+	# ${PROJECT_SOURCE_DIR}/external/src/arm-gnu-toolchain-12.2.mpacbti-rel1-x86_64-arm-none-eabi/arm-none-eabi/lib/thumb/v7e-m+dp/hard/crt0.o
+)
+
+# get_target_property(libstartup_gloss_example_COMPILE_OPTIONS libstartup_gloss_example COMPILE_OPTIONS)
+# message(WARNING ${libstartup_gloss_example_COMPILE_OPTIONS})
+# list(REMOVE_ITEM libstartup_gloss_example_COMPILE_OPTIONS "--specs=nosys.specs")
+# set_target_properties(libstartup_gloss_example PROPERTIES COMPILE_OPTIONS "${libstartup_gloss_example_COMPILE_OPTIONS}")
+# target_compile_options(libstartup_gloss_example
+# 	PRIVATE
+# 		--specs=nano.specs
+# 		# -fno-use-cxa-atexit
+# )
+get_target_property(libstartup_gloss_example_LINK_OPTIONS libstartup_gloss_example LINK_OPTIONS)
+list(REMOVE_ITEM libstartup_gloss_example_LINK_OPTIONS "-nostartfiles")
+list(REMOVE_ITEM libstartup_gloss_example_LINK_OPTIONS "-nostdlib")
+list(REMOVE_ITEM libstartup_gloss_example_LINK_OPTIONS "--specs=nosys.specs")
+set_target_properties(libstartup_gloss_example PROPERTIES LINK_OPTIONS "${libstartup_gloss_example_LINK_OPTIONS}")
+target_link_options(libstartup_gloss_example
+	PUBLIC
+		--specs=nano.specs
+)
+target_link_libraries(libstartup_gloss_example
+	PRIVATE
+		bob_interface
+		stm32_hal
+		cortex_m_gloss
+)
+
+bob_firmware_image(libstartup_gloss_example)

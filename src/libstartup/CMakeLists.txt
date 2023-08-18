@@ -10,6 +10,10 @@ add_library(cortex_m OBJECT
 # Remove `pedantic` as we call `main`
 set_source_files_properties(system.cpp PROPERTIES COMPILE_FLAGS "-Wno-pedantic -Wno-useless-cast -Wno-sign-conversion -Wno-old-style-cast")
 
+# target_compile_options(cortex_m
+# 	PRIVATE
+# 		-fno-tree-loop-distribute-patterns
+# )
 target_link_libraries(cortex_m
 	PRIVATE
 		bob_interface
