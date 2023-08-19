@@ -50,7 +50,7 @@ add_link_options(
 	-nostdlib
 	--specs=nosys.specs				# Use stubs for C syscalls.
 	LINKER:--gc-sections			# Garbage collection using the unique function and data sections.
-	LINKER:--build-id=uuid			# Generate a unique identiefier for each build and store it in a specific section (.note.gnu.build-id).
+	# LINKER:--build-id=uuid			# Generate a unique identiefier for each build and store it in a specific section (.note.gnu.build-id).
 	LINKER:--cref					# Generate a cross reference table in the MAP file, listing symbols and their source file(s).
 )
 
