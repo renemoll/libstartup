@@ -8,6 +8,8 @@ target_link_libraries(cortex_m_gloss
 	PRIVATE
 		bob_interface
 		stm32_cmsis
+	PUBLIC
+		util
 )
 target_include_directories(cortex_m_gloss
 	PUBLIC

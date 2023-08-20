@@ -17,4 +17,11 @@ target_link_libraries(cortex_m_st
 	PRIVATE
 		bob_interface
 		stm32_cmsis
+	PUBLIC
+		util
+)
+target_include_directories(cortex_m_st
+	PUBLIC
+		${PROJECT_BINARY_DIR}
+		${PROJECT_SOURCE_DIR}/include
 )

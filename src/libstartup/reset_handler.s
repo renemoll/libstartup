@@ -7,6 +7,7 @@
 	.type ResetHandler, %function
 ResetHandler:
 	ldr sp, =__stack_top__
+	bl CycleCounterStart
 	bl __prepare_environment
 	b __start
 	.endfunc

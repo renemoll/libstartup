@@ -1,6 +1,10 @@
 
 #include <cinttypes>
 
+extern "C" {
+#include "cyclecounter.h"
+}
+
 #include <stm32f7xx_ll_bus.h>
 #include <stm32f7xx_ll_gpio.h>
 
@@ -22,6 +26,9 @@ void initGpio()
 }
 
 int main() {
+	volatile const auto cnt = CycleCounterStop();
+	(void)cnt;
+
 	initGpio();
 
 	const auto ticks = (SystemCoreClock / 1000000U) - 1;

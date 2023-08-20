@@ -6,6 +6,7 @@
 	.func Reset_Handler
 	.type Reset_Handler, %function
 Reset_Handler:
+	bl CycleCounterStart
 	b _mainCRTStartup
 	.endfunc
 	.size Reset_Handler, .-Reset_Handler
