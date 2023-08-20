@@ -3,7 +3,7 @@
 """The builder, Bob the builder.
 
 Usage:
-	build.py build [<target>] [--no-container] [(debug|release)]
+	build.py build [<target>] [--no-container] [(debug|release|size)]
 	build.py debug [<target>]
 	build.py format
 	build.py test
@@ -54,6 +54,7 @@ class Command(enum.Enum):
 class BuildConfig(enum.Enum):
 	Release = 1
 	Debug = 2
+	MinSizeRel = 3
 
 	def __str__(self):
 		return self.name.lower()
@@ -101,6 +102,8 @@ def determine_build_config(args):
 		return BuildConfig.Release
 	elif args['debug']:
 		return BuildConfig.Debug
+	elif args['size']:
+		return BuildConfig.MinSizeRel
 
 	logging.warning("No build config selected, defaulting to release build config")
 	return BuildConfig.Release
