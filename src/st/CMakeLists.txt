@@ -3,7 +3,8 @@
 # Create an "object" library to preserve the weak symbols used for IRQ handlers.
 #
 add_library(cortex_m_st OBJECT
-	${PROJECT_SOURCE_DIR}/external/src/cmsis_device_f7.git/Source/Templates/gcc/startup_stm32f767xx.s
+	# ${PROJECT_SOURCE_DIR}/external/src/cmsis_device_f7.git/Source/Templates/gcc/startup_stm32f767xx.s
+	startup_stm32f767xx.s
 	${PROJECT_SOURCE_DIR}/external/src/cmsis_device_f7.git/Source/Templates/system_stm32f7xx.c
 )
 

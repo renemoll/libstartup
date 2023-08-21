@@ -117,5 +117,5 @@ target_link_libraries(libstartup_gloss_example
 		stm32_hal
 		cortex_m_gloss
 )
-
+set(LINKER_SCRIPTS ${PROJECT_SOURCE_DIR}/src/gloss/STM32F767ZITx_FLASH.ld)
 bob_firmware_image(libstartup_gloss_example)
