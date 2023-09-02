@@ -16,7 +16,7 @@ SECTIONS
 	 */
 	.text : ALIGN(4)
 	{
-		FILL(0xFF)
+		FILL(0xFF);
 
 		/* Interrupt vectors */
 		__vectors_start__ = ABSOLUTE(.);
@@ -69,14 +69,14 @@ SECTIONS
 
 		. = ALIGN(4);
 		__init_array_start__ = .;
-		KEEP (*(.init_array))
-		KEEP (*(.init_array.*))
+		KEEP (*(SORT(.init_array.*)))
+		KEEP (*(.init_array*))
 		__init_array_end__ = .;
 
 		. = ALIGN(4);
 		__fini_array_start__ = .;
-		KEEP (*(.fini_array))
-		KEEP (*(.fini_array.*))
+		KEEP (*(SORT(.fini_array.*)))
+		KEEP (*(.fini_array*))
 		__fini_array_end__ = .;
 	} >FLASH
 
@@ -177,3 +177,17 @@ SECTIONS
 		libgcc.a(*)
 	}
 }
+
+/*
+ * Compatability
+ * 
+ */
+
+PROVIDE(ResetHandler = Reset_Handler);
+
+_estack = __stack_top__;
+_sidata = __data_src__;
+_sdata = __data_dest_start__;
+_edata = __data_dest_end__;
+_sbss = __bss_start__;
+_ebss = __bss_end__;

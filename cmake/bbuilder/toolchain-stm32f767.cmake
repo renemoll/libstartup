@@ -60,6 +60,6 @@ add_compile_definitions(
 
 #todo: what if I want to override these?
 set(LINKER_SCRIPTS
-	${CMAKE_CURRENT_LIST_DIR}/../../linkerscripts/stm32f7/memory.ld
+	${CMAKE_CURRENT_LIST_DIR}/../../linkerscripts/stm32f7/memory_itcm.ld
 	${CMAKE_CURRENT_LIST_DIR}/../../linkerscripts/stm32f7/sections.ld
 )
