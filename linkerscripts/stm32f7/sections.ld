@@ -63,7 +63,7 @@ SECTIONS
 		 */
 		. = ALIGN(4);
 		__preinit_array_start__ = .;
-		KEEP (*(.preinit_array))
+		KEEP (*(.preinit_array*))
 		KEEP (*(.preinit_array.*))
 		__preinit_array_end__ = .;
 
