@@ -59,6 +59,8 @@ def process_file(sheet, filename):
 		for k,v in result.items():
 			print(f' * {k}: {v}')
 
+		# get symbols...
+
 
 if __name__ == '__main__':
 	wb = openpyxl.Workbook()

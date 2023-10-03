@@ -35,6 +35,11 @@ SECTIONS
 		 */
 		*(.glue_7)
 		*(.glue_7t)
+
+		/*
+		 * Exception handling frame, used to unwind the stack.
+		 */
+		*(.eh_frame)
 	} >FLASH
 
 	/*
@@ -49,6 +54,8 @@ SECTIONS
 		/* Initialization/termination code */
 		. = ALIGN(4);
 		KEEP (*(.init))
+		. = ALIGN(4);
+		KEEP (*(.fini))
 
 		/*
 		 * The init/preinit arrays, i.e. an array of pointers to initialization 
@@ -64,31 +71,83 @@ SECTIONS
 		KEEP (*(SORT(.init_array.*)))
 		KEEP (*(.init_array*))
 		__init_array_end__ = .;
+
+		. = ALIGN(4);
+		__fini_array_start__ = .;
+		KEEP (*(SORT(.fini_array.*)))
+		KEEP (*(.fini_array*))
+		__fini_array_end__ = .;
 		 */
 	} >FLASH
 
-	.preinit_array : ALIGN(4)
-	{
-		__preinit_array_start__ = .;
-		KEEP (*(.preinit_array))
-		__preinit_array_end__ = .;
-	} > FLASH
+.preinit_array     :
+  {
+    PROVIDE_HIDDEN (__preinit_array_start__ = .);
+    KEEP (*(.preinit_array))
+    PROVIDE_HIDDEN (__preinit_array_end__ = .);
+  } > FLASH
+  .init_array     :
+  {
+    PROVIDE_HIDDEN (__init_array_start__ = .);
+    KEEP (*(SORT(.init_array.*)))
+    KEEP (*(.init_array))
+    PROVIDE_HIDDEN (__init_array_end__ = .);
+  } > FLASH
+  .fini_array     :
+  {
+    PROVIDE_HIDDEN (__fini_array_start__ = .);
+    KEEP (*(SORT(.fini_array.*)))
+    KEEP (*(.fini_array))
+    PROVIDE_HIDDEN (__fini_array_end__ = .);
+  } > FLASH
+ .ctors          :
+  {
+    /* gcc uses crtbegin.o to find the start of
+       the constructors, so we make sure it is
+       first.  Because this is a wildcard, it
+       doesn't matter if the user does not
+       actually link against crtbegin.o; the
+       linker won't look for a file to match a
+       wildcard.  The wildcard also means that it
+       doesn't matter which directory crtbegin.o
+       is in.  */
+    KEEP (*crtbegin.o(.ctors))
+    KEEP (*crtbegin?.o(.ctors))
+    /* We don't want to include the .ctor section from
+       the crtend.o file until after the sorted ctors.
+       The .ctor section from the crtend file contains the
+       end of ctors marker and it must be last */
+    KEEP (*(EXCLUDE_FILE (*crtend.o *crtend?.o ) .ctors))
+    KEEP (*(SORT(.ctors.*)))
+    KEEP (*(.ctors))
+  } > FLASH
+  .dtors          :
+  {
+    KEEP (*crtbegin.o(.dtors))
+    KEEP (*crtbegin?.o(.dtors))
+    KEEP (*(EXCLUDE_FILE (*crtend.o *crtend?.o ) .dtors))
+    KEEP (*(SORT(.dtors.*)))
+    KEEP (*(.dtors))
+  } > FLASH
 
-	.init_array : ALIGN(4)
+	/*
+	 * ARM sections:
+	 * - .ARM.extab: exception unwinding information
+	 * - .ARM.exidx: index entries for section unwinding
+	 */
+	.ARM.extab : ALIGN(4)
 	{
-		__init_array_start__ = .;
-		KEEP (*(SORT(.init_array.*)))
-		KEEP (*(.init_array))
-		__init_array_end__ = .;
-	} > FLASH
-	
-	.fini_array : ALIGN(4)
+		*(.ARM.extab*)
+		*(.gnu.linkonce.armextab.*) 
+	} >FLASH
+
+	.ARM : ALIGN(4)
 	{
-		__fini_array_start__ = .;
-		KEEP (*(SORT(.fini_array.*)))
-		KEEP (*(.fini_array))
-		__fini_array_end__ = .;
-	} > FLASH
+		__exidx_start = .;
+		*(.ARM.exidx*)
+		*(.gnu.linkonce.armexidx.*)
+		__exidx_end = .;
+	} >FLASH
 
 	/*
 	 * Initialized variables, which are not read-only, are stored in FLASH
@@ -166,26 +225,6 @@ SECTIONS
 		libc.a(*)
 		libm.a(*)
 		libgcc.a(*)
-		
-		/* Exception handling frame, used to unwind the stack. */
-		*(.eh_frame*)
-
-		/*
-		 * ARM sections:
-		 * - .ARM.extab: exception unwinding information
-		 * - .ARM.exidx: index entries for section unwinding
-		 */
-		*(.ARM.extab*)
-		*(.gnu.linkonce.armextab.*)
-		*(.ARM.exidx*)
-		*(.gnu.linkonce.armexidx.*)
-
-		/*
-		 * deconstructors
-		 */
-		*(.fini_array)
-		*(.fini_array.*)
-		*(.fini)
 	}
 }
 

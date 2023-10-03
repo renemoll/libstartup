@@ -27,12 +27,12 @@ target_compile_definitions(stm32_hal
 # todo: think of an alternative to INTERFACE here (these leak to other targets...)
 target_compile_options(stm32_hal
 	INTERFACE
-		$<$<COMPILE_LANGUAGE:CXX>:-Wno-volatile>
-		$<$<COMPILE_LANGUAGE:CXX>:-Wno-useless-cast>
-		-Wno-unused-parameter
-		$<$<COMPILE_LANGUAGE:CXX>:-Wno-old-style-cast>
-		-Wno-pedantic
-		$<$<COMPILE_LANGUAGE:CXX>:-Wno-sign-conversion>
+		# $<$<COMPILE_LANGUAGE:CXX>:-Wno-volatile>
+		# $<$<COMPILE_LANGUAGE:CXX>:-Wno-useless-cast>
+		# -Wno-unused-parameter
+		# $<$<COMPILE_LANGUAGE:CXX>:-Wno-old-style-cast>
+		# -Wno-pedantic
+		# $<$<COMPILE_LANGUAGE:CXX>:-Wno-sign-conversion>
 )
 target_link_libraries(stm32_hal
 	PUBLIC

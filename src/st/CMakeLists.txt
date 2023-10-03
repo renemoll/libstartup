@@ -16,7 +16,7 @@ set_source_files_properties(${PROJECT_SOURCE_DIR}/external/src/cmsis_device_f7.g
 
 target_link_libraries(cortex_m_st
 	PRIVATE
-		bob_interface
+		# bob_interface
 		stm32_cmsis
 	PUBLIC
 		util
