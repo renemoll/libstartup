@@ -1,9 +1,31 @@
 import pathlib
 
-from elftools.elf.elffile import ELFFile
+from elftools.elf.elffile import ELFFile, SymbolTableSection, Section
 import elftools
 import openpyxl
 
+
+def get_symbols(filename):
+	symbols = {}
+
+	with open(filename, 'rb') as f:
+		elffile = ELFFile(f)
+		text_idx = [idx for idx, s in enumerate(elffile.iter_sections()) if s.name == '.text']
+		symbol_tables = [s for idx, s in enumerate(elffile.iter_sections()) if isinstance(s, SymbolTableSection)]
+		for st in symbol_tables:
+			for nsym, symbol in enumerate(st.iter_symbols()):
+				if symbol['st_shndx'] != text_idx[0]:
+					continue
+				if symbol['st_info']['type'] == 'STT_SECTION' \
+						or symbol['st_info']['type'] == 'STT_NOTYPE' \
+						or symbol['st_info']['type'] == 'STT_FILE':
+					continue
+
+				# if symbol.name == 'vectorTable' or symbol.name == 'g_pfnVectors':
+					# import pdb; pdb.set_trace()
+
+				symbols[symbol.name] = symbol['st_size']
+	return symbols
 
 def process_file(sheet, filename):
 	print('In file:', filename)
@@ -30,9 +52,9 @@ def process_file(sheet, filename):
 			print(f' * {k}: {v}')
 
 		mapping = {
-			'FLASH': ['.text', '.rodata', '.gnu_build_id', '.ARM', '.data'],
-			'RAM': ['.bss', '.data', '._user_heap', '._user_stack'],
-			'RAM (no stack&heap': ['.bss', '.data'],
+			'FLASH': ['.text', '.rodata', '.gnu_build_id', '.ARM', '.data', '.isr_vector'],
+			'RAM': ['.bss', '.data', '._user_heap', '._user_stack', '._user_heap_stack'],
+			'RAM (no stack&heap)': ['.bss', '.data'],
 		}
 
 		result = {}
@@ -41,17 +63,16 @@ def process_file(sheet, filename):
 
 		sheet.append([
 			filename.stem,
-			filename.stem[filename.stem.rfind('_')+1:],
+			filename.stem[filename.stem.find('_')+1:],
 			result['FLASH'],
 			result['RAM'],
-			result['RAM (no stack&heap'],
+			result['RAM (no stack&heap)'],
 			sizes['.text'],
 			sizes['.rodata'],
 			sizes['.data'],
 			sizes['.bss'],
-			sizes['._user_heap'],
-			sizes['._user_stack'],
-			sizes['.gnu_build_id'],
+			result['RAM'] - result['RAM (no stack&heap)'],
+			sizes['.gnu_build_id'] if '.gnu_build_id' in sizes else 0,
 			sizes['.ARM'] if '.ARM' in sizes else 0
 		])
 
@@ -59,7 +80,15 @@ def process_file(sheet, filename):
 		for k,v in result.items():
 			print(f' * {k}: {v}')
 
-		# get symbols...
+
+def gather_elf_files(basepath: pathlib.Path):
+	results = []
+	experiments = [x for x in basepath.iterdir() if x.is_dir()]
+	for exp in experiments:
+		files = [x for x in exp.iterdir() if x.suffix == '.elf']
+		results += files
+	results.sort()
+	return results
 
 
 if __name__ == '__main__':
@@ -67,13 +96,22 @@ if __name__ == '__main__':
 	sheet = wb.active
 	sheet.title = "O3"
 
-	sheet.append(["File", "linkerscript", "FLASH", "RAM", "RAM (exl. stack + heap)", '.text', '.rodata', '.data', '.bss', '._user_heap', '._user_stack', '.gnu_build_id', '.ARM'])	
+	sheet.append(["File", "experiment", "FLASH", "RAM", "RAM (exl. stack + heap)", '.text', '.rodata', '.data', '.bss', 'heap&stack','.gnu_build_id', '.ARM'])	
 	sheet.column_dimensions["A"].width = 40
 	sheet.column_dimensions["B"].width = 12
 
-	path = pathlib.Path.cwd() / "build" / "stm32-release" / "example"
-	files = [x for x in path.iterdir() if x.suffix == '.elf']
-	for f in files:
+	path = pathlib.Path.cwd() / "build" / "stm32-release" / "experiments"
+	experiments = gather_elf_files(path)
+	for f in experiments:
 		process_file(sheet, f)
+
+	for f in experiments:
+		sh = wb.create_sheet(f.stem)
+		st = get_symbols(f)
+		k = sorted(st.items())
+		for name, size in k:
+			if 'IRQHandler' in name:
+				continue
+			sh.append([name, size])
 
 	wb.save("export.xlsx")

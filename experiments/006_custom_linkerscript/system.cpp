@@ -93,7 +93,7 @@ void __prepare_environment()
 	copy_data_section();
 	zero_bss_section();
 
-	SCB->VTOR = __vectors_start__;
+	// SCB->VTOR = __vectors_start__;
 
 	// todo: clear stack/heap
 	// todo: invalidate caches

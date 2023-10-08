@@ -96,7 +96,7 @@ void __prepare_environment()
 	tiny::memcpy(&__data_dest_start__, &__data_src__, &__data_dest_end__ - &__data_dest_start__);
 	tiny::memset(&__bss_start__, 0, &__bss_end__ - &__bss_start__);
 
-	SCB->VTOR = __vectors_start__;
+	// SCB->VTOR = __vectors_start__;
 
 	// todo: clear stack/heap
 	// todo: invalidate caches
