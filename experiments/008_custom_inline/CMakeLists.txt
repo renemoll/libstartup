@@ -1,5 +1,5 @@
 
-add_executable(007_custom_tiny_memset
+add_executable(008_custom_inline
 	${CMAKE_CURRENT_LIST_DIR}/../common/main.cpp
 	${CMAKE_CURRENT_LIST_DIR}/../common/init.cpp
 	${CMAKE_CURRENT_LIST_DIR}/../common/timeout.cpp
@@ -8,13 +8,13 @@ add_executable(007_custom_tiny_memset
 	${CMAKE_CURRENT_LIST_DIR}/../006_custom_linkerscript/vector_table.cpp
 )
 
-target_include_directories(007_custom_tiny_memset
+target_include_directories(008_custom_inline
 	PRIVATE	
 		${CMAKE_CURRENT_LIST_DIR}/../common/
 		${CMAKE_CURRENT_LIST_DIR}/../006_custom_linkerscript/
 )
 
-target_link_libraries(007_custom_tiny_memset
+target_link_libraries(008_custom_inline
 	PRIVATE
 		stm32_hal
 )
@@ -24,9 +24,9 @@ set(LINKER_SCRIPTS
 	${CMAKE_CURRENT_LIST_DIR}/../006_custom_linkerscript/sections.ld
 )
 
-bob_firmware_image(007_custom_tiny_memset)
+bob_firmware_image(008_custom_inline)
 
-target_compile_options(007_custom_tiny_memset
+target_compile_options(008_custom_inline
 	PRIVATE
 		# from 002_st_cpp_options
 		$<$<COMPILE_LANGUAGE:CXX>:-fno-exceptions>
@@ -35,10 +35,9 @@ target_compile_options(007_custom_tiny_memset
 		$<$<COMPILE_LANGUAGE:CXX>:-fno-use-cxa-atexit>
 		# from 007_custom_tiny_memset
 		-fno-tree-loop-distribute-patterns
-		# -fno-unroll-loops
 )
 
-target_link_options(007_custom_tiny_memset
+target_link_options(008_custom_inline
 	PRIVATE
 		# from 003_st_nostartfiles
 		-nostartfiles
