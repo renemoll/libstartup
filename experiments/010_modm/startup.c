@@ -96,11 +96,11 @@ void __modm_startup(void)
 	table_zero(__table_zero_intern_start, __table_zero_intern_end);
 
 	// Enable instruction cache
-	SCB_EnableICache();
+	// SCB_EnableICache();
 	// Set the vector table location
-	SCB->VTOR = (uint32_t)__vector_table_ram_start;
+	// SCB->VTOR = (uint32_t)__vector_table_ram_start;
 	// Enable trapping of divide by zero for UDIV/SDIV instructions.
-	SCB->CCR |= SCB_CCR_DIV_0_TRP_Msk;
+	// SCB->CCR |= SCB_CCR_DIV_0_TRP_Msk;
 	// Call all hardware initialize hooks
 	table_call(__hardware_init_start, __hardware_init_end);
 
