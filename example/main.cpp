@@ -1,8 +1,11 @@
 
+#include "timeout.h"
+
+#include "stm32f7xx_ll_bus.h"
+#include "stm32f7xx_ll_gpio.h"
+
 #include <cinttypes>
 
-#include <stm32f7xx_ll_bus.h>
-#include <stm32f7xx_ll_gpio.h>
 
 //! \todo LL API
 uint32_t SystemCoreClock = 16000000;
@@ -22,22 +25,19 @@ void initGpio()
 int main() {
 	initGpio();
 
-	const auto ticks = (SystemCoreClock / 1000000U) - 1;
+	const auto ticks = (SystemCoreClock / 1000U) - 1;
 	SysTick_Config(ticks);
 	__enable_irq();
 
-	while(true)
-		__NOP();
+	while(true) {
+		if (g_timer.triggered())
+			LL_GPIO_TogglePin(GPIOB, LL_GPIO_PIN_7);
+	}
 }
 
 extern "C" {
-void SysTick_Handler(){
-	static int ticks = 0;
-
-	ticks++;
-	if (ticks > (1000000 / 4)){
-		ticks = 0;
-		LL_GPIO_TogglePin(GPIOB, LL_GPIO_PIN_7);
-	}
+void SysTick_Handler()
+{
+	g_timer.increment();
 }
 }

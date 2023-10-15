@@ -68,7 +68,7 @@ function(bob_configure_compiler_warnings TARGET)
 
 	set(BOB_COMPILER_WARNINGS_CLANG
 		# Misc
-		-Wshadow-all											# Additional shadowing checks.
+		-Wshadow-all										# Additional shadowing checks.
 	)
 
 	set(BOB_COMPILER_WARNINGS_MSVC
@@ -135,6 +135,7 @@ function(bob_configure_compiler_codegen TARGET)
 		-fwrapv														# Assume signed arithmatic may wrap around.
 		$<$<COMPILE_LANGUAGE:ASM>:-x assembler-with-cpp>			# Compile ASM as C++
 		$<$<COMPILE_LANGUAGE:CXX>:-fdiagnostics-show-template-tree>	# Print template structures in a tree structure.
+		$<$<COMPILE_LANGUAGE:CXX>:-fno-use-cxa-atexit>				# Don't allow registering exit functions.
 	)
 
 	set(BOB_COMPILER_BEHAVIOUR_GNU

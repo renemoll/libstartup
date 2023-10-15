@@ -65,28 +65,30 @@ extern InitFunction __fini_array_start__;
 extern InitFunction __fini_array_end__;
 
 //extern void _init(void);
-//extern void _fini(void);
 
 extern int main();
 
 namespace
 {
-void copy_data_section()
-{
-	const auto count = (&__data_dest_end__ - &__data_dest_start__);
-	std::copy(&__data_src__, &__data_src__ + count, &__data_dest_start__);
-}
-
-void zero_bss_section()
-{
-	std::fill(&__bss_start__, &__bss_end__, 0u);
-}
-
 void table_call(InitFunction* start, InitFunction* end)
 {
 	std::for_each(start, end, [](const InitFunction f) { f(); });
 }
 } // namespace
+
+namespace tiny{
+void memcpy(uint32_t* dest, uint32_t* src, std::size_t count) {
+	const uint32_t* end = dest + count;
+	while (dest < end)
+		*dest++ = *src++;
+}
+
+void memset(uint32_t* dest, uint32_t value, std::size_t count) {
+	const uint32_t* end = dest + count;
+	while (dest < end)
+		*dest++ = value;
+}
+}
 
 void __prepare_environment()
 {
@@ -95,8 +97,8 @@ void __prepare_environment()
 		// note: lazy stacking is enabled by default (CPU reset code)
 	}
 
-	copy_data_section();
-	zero_bss_section();
+	tiny::memcpy(&__data_dest_start__, &__data_src__, &__data_dest_end__ - &__data_dest_start__);
+	tiny::memset(&__bss_start__, 0, &__bss_end__ - &__bss_start__);
 
 	SCB->VTOR = __vectors_start__;
 
@@ -112,10 +114,6 @@ void __prepare_environment()
 void __start()
 {
 	main();
-
-	table_call(&__fini_array_start__, &__fini_array_end__);
-
-//	_fini();
 
 	// todo: hit the debugger? restart?
 	while (true) {}

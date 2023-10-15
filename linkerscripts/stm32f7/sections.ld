@@ -11,18 +11,21 @@ __stack_size__ = 0x100;
 
 SECTIONS
 {
-	/*
-	 * Code and some special (helper) sections.
-	 */
-	.text : ALIGN(4)
+	/* The startup code goes first into FLASH */
+	.isr_vector : ALIGN(4)
 	{
 		FILL(0xFF)
 
 		/* Interrupt vectors */
 		__vectors_start__ = ABSOLUTE(.);
 		KEEP(*(.isr_vector))
-		KEEP(*(.isr_vector.*))
+	} >FLASH
 
+	/*
+	 * Code and some special (helper) sections.
+	 */
+	.text : ALIGN(4)
+	{
 		/* Generic code */
 		*(.text)
 		*(.text.*)
@@ -35,11 +38,6 @@ SECTIONS
 		 */
 		*(.glue_7)
 		*(.glue_7t)
-
-		/*
-		 * Exception handling frame, used to unwind the stack.
-		 */
-		*(.eh_frame)
 	} >FLASH
 
 	/*
@@ -51,53 +49,29 @@ SECTIONS
 		*(.rodata)
 		*(.rodata*)
 
-		/* Initialization/termination code */
+		/* Optional initialization code */
 		. = ALIGN(4);
 		KEEP (*(.init))
-		. = ALIGN(4);
-		KEEP (*(.fini))
-
-		/*
-		 * The init/preinit arrays, i.e. an array of pointers to initialization 
-		 * functions/constructors.
-		 */
-		. = ALIGN(4);
-		__preinit_array_start__ = .;
-		KEEP (*(.preinit_array))
-		KEEP (*(.preinit_array.*))
-		__preinit_array_end__ = .;
-
-		. = ALIGN(4);
-		__init_array_start__ = .;
-		KEEP (*(.init_array))
-		KEEP (*(.init_array.*))
-		__init_array_end__ = .;
-
-		. = ALIGN(4);
-		__fini_array_start__ = .;
-		KEEP (*(.fini_array))
-		KEEP (*(.fini_array.*))
-		__fini_array_end__ = .;
 	} >FLASH
 
 	/*
-	 * ARM sections:
-	 * - .ARM.extab: exception unwinding information
-	 * - .ARM.exidx: index entries for section unwinding
+	 * The preinit/init arrays, i.e. an array of pointers to initialization 
+	 * functions/constructors.
 	 */
-	.ARM.extab : ALIGN(4)
+	.preinit_array : ALIGN(4)
 	{
-		*(.ARM.extab*)
-		*(.gnu.linkonce.armextab.*) 
-	} >FLASH
+		__preinit_array_start__ = .;
+		KEEP (*(.preinit_array))
+		__preinit_array_end__ = .;
+	} > FLASH
 
-	.ARM : ALIGN(4)
+	.init_array : ALIGN(4)
 	{
-		__exidx_start = .;
-		*(.ARM.exidx*)
-		*(.gnu.linkonce.armexidx.*)
-		__exidx_end = .;
-	} >FLASH
+		__init_array_start__ = .;
+		KEEP (*(SORT(.init_array.*)))
+		KEEP (*(.init_array))
+		__init_array_end__ = .;
+	} > FLASH
 
 	/*
 	 * Initialized variables, which are not read-only, are stored in FLASH
@@ -105,7 +79,6 @@ SECTIONS
 	 */
 	.data : ALIGN(4)
 	{
-		. = ALIGN(4);
 		__data_dest_start__ = .;
 
 		*(.data)
@@ -131,7 +104,6 @@ SECTIONS
 	 */
 	.bss (NOLOAD) : ALIGN(4)
 	{
-		. = ALIGN(4);
 		__bss_start__ = .;
 
 		*(.bss)
@@ -143,7 +115,6 @@ SECTIONS
 
 	._user_heap (NOLOAD) : ALIGN(8)
 	{
-		. = ALIGN(8);
 		__heap_start__ = .;
 
 		. = . + __heap_size__;
@@ -157,7 +128,6 @@ SECTIONS
 	 */
 	._user_stack (NOLOAD) : ALIGN(8)
 	{
-		. = ALIGN(8);
 		__stack_start__ = .;
 
 		. = . + __stack_size__;
@@ -175,5 +145,25 @@ SECTIONS
 		libc.a(*)
 		libm.a(*)
 		libgcc.a(*)
+
+		/* Exception handling frame, used to unwind the stack. */
+		*(.eh_frame*)
+
+		/*
+		 * ARM sections:
+		 * - .ARM.extab: exception unwinding information
+		 * - .ARM.exidx: index entries for section unwinding
+		 */
+		*(.ARM.extab*)
+		*(.gnu.linkonce.armextab.*)
+		*(.ARM.exidx*)
+		*(.gnu.linkonce.armexidx.*)
+
+		/*
+		 * deconstructors
+		 */
+		*(.fini_array)
+		*(.fini_array.*)
+		*(.fini)
 	}
 }

@@ -22,13 +22,9 @@ function(bob_configure_options target)
 			INTERFACE
 				$<$<AND:$<COMPILE_LANGUAGE:CXX>,$<BOOL:${BOB_USE_RTTI}>>:-frtti>
 				$<$<AND:$<COMPILE_LANGUAGE:CXX>,$<NOT:$<BOOL:${BOB_USE_RTTI}>>>:-fno-rtti>
-		)
-
-		target_compile_options(${target}
-			INTERFACE
 				$<$<BOOL:${BOB_USE_EXCEPTIONS}>:-fexceptions>
 				$<$<NOT:$<BOOL:${BOB_USE_EXCEPTIONS}>>:-fno-exceptions>
-				$<$<AND:$<COMPILE_LANGUAGE:CXX>,$<NOT:$<BOOL:${BOB_USE_EXCEPTIONS}>>>:-fno-use-cxa-atexit>
+				$<$<NOT:$<BOOL:${BOB_USE_EXCEPTIONS}>>:-fno-unwind-tables>
 		)
 
 		target_compile_options(${target}

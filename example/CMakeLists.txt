@@ -1,6 +1,7 @@
 
 add_executable(libstartup_example
 	main.cpp
+	timeout.cpp
 )
 
 target_link_libraries(libstartup_example
