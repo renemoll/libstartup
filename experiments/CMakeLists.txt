@@ -9,8 +9,8 @@ add_subdirectory(007_custom_tiny_memset)
 add_subdirectory(008_custom_inline)
 
 add_subdirectory(010_modm)
+add_subdirectory(011_libgloss)
 
 #
-# todo: gloss
 # todo: picolibc
 #
