@@ -84,14 +84,14 @@ void __prepare_environment()
 		uint32_t* src = &__data_src__;
 		const uint32_t* end = &__data_dest_end__;
 		while (dest < end)
-			*dest = *src++;
+			*(dest++) = *(src++);
 	}
 
 	{
 		uint32_t* dest = &__bss_start__;
 		const uint32_t* end = &__bss_end__;
 		while (dest < end)
-			*dest++ = 0;
+			*(dest++) = 0;
 	}
 
 	// SCB->VTOR = __vectors_start__;
