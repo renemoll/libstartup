@@ -11,16 +11,12 @@ __stack_size__ = 0x400;
 
 SECTIONS
 {
-	/*
-	 * Interrupt vectors
-	 */
+	/* The startup code goes first into FLASH */
 	.isr_vector : ALIGN(4)
 	{
-		FILL(0xFF);
-
+		/* Interrupt vectors */
 		__vectors_start__ = ABSOLUTE(.);
 		KEEP(*(.isr_vector))
-		KEEP(*(.isr_vector.*))
 	} >FLASH
 
 	/*
@@ -51,13 +47,13 @@ SECTIONS
 		*(.rodata)
 		*(.rodata*)
 
-		/* Initialization/termination code */
+		/* Optional initialization code */
 		. = ALIGN(4);
 		KEEP (*(.init))
 	} >FLASH
 
 	/*
-	 * The init/preinit arrays, i.e. an array of pointers to initialization 
+	 * The preinit/init arrays, i.e. an array of pointers to initialization 
 	 * functions/constructors.
 	 */
 	.preinit_array : ALIGN(4)
@@ -90,6 +86,15 @@ SECTIONS
 		__data_dest_end__ = .;
 	} >DTCMRAM AT> FLASH
 	__data_src__ = LOADADDR(.data);
+
+	/*
+	 * Embedded the GNU build ID into the resulting file.
+	 */
+	.gnu_build_id :
+	{
+		PROVIDE(g_note_build_id = .);
+		*(.note.gnu.build-id)
+	} > FLASH
 
 	/*
 	 * Uninitialized data, not read-only, filled with a default value
