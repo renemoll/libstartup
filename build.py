@@ -164,6 +164,7 @@ def build_stm32():
 
 def build_system_command(options, output_folder):
 	cmd = ["cmake",
+		"-Wdev",
 		"-B", "build/{}".format(output_folder),
 		"-S", ".",
 		"-DCMAKE_BUILD_TYPE={}".format(str(options['build']['config']))
