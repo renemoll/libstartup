@@ -78,3 +78,8 @@ include(stm32)
 # Generate a option header
 #
 configure_file(cmake/config_options.h.in config_options.h)
+
+
+# if(NOT APPLE)
+# 	set(CMAKE_INSTALL_RPATH $ORIGIN)
+# endif()

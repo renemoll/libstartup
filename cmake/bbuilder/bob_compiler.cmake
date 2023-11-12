@@ -119,6 +119,8 @@ function(bob_configure_compiler_codegen TARGET)
 	set(BOB_COMPILER_BEHAVIOUR_GNU_CLANG
 		-fno-common													# Warn when global variables are not unique (and unintentionaly merged.)
 		-fstack-usage												# Generate stack depth information.
+		-fvisibility=hidden
+		-fvisibility-inlines-hidden
 		-fwrapv														# Assume signed arithmatic may wrap around.
 		$<$<COMPILE_LANGUAGE:ASM>:-x assembler-with-cpp>			# Compile ASM as C++
 		$<$<COMPILE_LANGUAGE:CXX>:-fdiagnostics-show-template-tree>	# Print template structures in a tree structure.

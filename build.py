@@ -4,6 +4,7 @@
 
 Usage:
 	build.py build [<target>] [--no-container] [(debug|release)]
+	build.py install [<target>]
 	build.py debug [<target>]
 	build.py format
 	build.py test
@@ -46,6 +47,7 @@ class Command(enum.Enum):
 	Debug = 2
 	Format = 4
 	Test = 3
+	Install = 5
 
 	def __str__(self):
 		return self.name.lower()
@@ -92,6 +94,8 @@ def determine_command(args):
 		return Command.Test
 	elif args['format']:
 		return Command.Format
+	elif args['install']:
+		return Command.Install
 
 	raise ValueError("Unsupported command")
 
@@ -215,6 +219,17 @@ def bob_build(options, cwd):
 	]
 
 
+def bob_install(options, cwd):
+	output_folder = determine_output_folder(options['build'])
+	logging.debug("Determined output folder: %s", output_folder)
+
+	steps = []
+	if options['use-container']:
+		steps += container_command(options['build']['target'], cwd)
+
+	steps += ["cmake", "--install", "build/{}".format(output_folder), "--prefix", f"/work/install"]
+	return [steps]
+
 def bob_debug(options, cwd):
 	"""
 	Todo:
@@ -277,6 +292,8 @@ def bob(command, options):
 		tasks += bob_test(options)
 	if command == Command.Format:
 		tasks += bob_format(options, cwd)
+	if command == Command.Install:
+		tasks += bob_install(options, cwd)
 
 	logging.debug("Processing %d tasks", len(tasks))
 	for task in tasks:
