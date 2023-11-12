@@ -4,6 +4,14 @@
 
 cmake_minimum_required(VERSION 3.12 FATAL_ERROR)
 
+function(bob_info)
+	message(STATUS "[BOB] Info: ${ARGN}")
+endfunction()
+
+function(bob_error)
+	message(FATAL_ERROR "[BOB] Error: ${ARGN}")
+endfunction()
+
 #
 # Ensure an out of source build folder.
 #
@@ -13,11 +21,7 @@ function(ensure_out_of_source_build)
 	get_filename_component(bindir "${CMAKE_BINARY_DIR}" REALPATH)
 
 	if("${srcdir}" STREQUAL "${bindir}")
-		message(FATAL_ERROR "\n
-			In-source build detected!\
-			Generate an out of source build with:\
-			\
-			cmake -S . -B build")
+		bob_error("in-source build detected.")
 	endif()
 endfunction()
 ensure_out_of_source_build()
@@ -34,11 +38,11 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS On)
 #
 
 if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
-	message(STATUS "Defaulting build type to 'RelWithDebInfo'.")
-	set(CMAKE_BUILD_TYPE "RelWithDebInfo" CACHE STRING "Build configuration" FORCE)
+	bob_info("no build type selected, defaulting to 'Release'.")
+	set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Build configuration" FORCE)
 endif()
 
-message(STATUS "CMAKE_BUILD_TYPE is ${CMAKE_BUILD_TYPE}")
+bob_info("CMAKE_BUILD_TYPE is ${CMAKE_BUILD_TYPE}")
 
 #
 # Generate a version header
@@ -58,10 +62,10 @@ bob_configure_compiler_warnings(bob_interface)
 bob_configure_compiler_codegen(bob_interface)
 bob_configure_options(bob_interface)
 
-target_compile_features(bob_interface
-	INTERFACE
-		cxx_std_20
-)
+# target_compile_features(bob_interface
+# 	INTERFACE
+# 		cxx_std_20
+# )
 
 #
 # Cortex-M generic templates

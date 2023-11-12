@@ -1,19 +1,20 @@
+#
+# Compiler configuration
+#
+
+if((CMAKE_C_COMPILER_ID MATCHES "Clang") OR (CMAKE_CXX_COMPILER_ID MATCHES "Clang"))
+	set(BOB_COMPILER_CLANG On)
+
+	option(BOB_CLANG_WARN_EVERYTHING "Enable `-Weverything` for Clang" OFF)
+elseif((CMAKE_CXX_COMPILER_ID MATCHES "GNU") OR (CMAKE_C_COMPILER_ID MATCHES "GNU"))
+	set(BOB_COMPILER_GCC On)
+elseif(MSVC)
+	set(BOB_COMPILER_MSVC On)
+else()
+	bob_error("unsupported compiler.")
+endif()
 
 function(bob_configure_compiler_warnings TARGET)
-	#
-	# Determine compiler
-	#
-
-	if((CMAKE_C_COMPILER_ID MATCHES "Clang") OR (CMAKE_CXX_COMPILER_ID MATCHES "Clang"))
-		set(BOB_COMPILER_CLANG On)
-	elseif((CMAKE_CXX_COMPILER_ID MATCHES "GNU") OR (CMAKE_C_COMPILER_ID MATCHES "GNU"))
-		set(BOB_COMPILER_GCC On)
-	elseif(MSVC)
-		set(BOB_COMPILER_MSVC On)
-	else()
-		message(FATAL_ERROR "Unsupported compiler.")
-	endif()
-
 	set(BOB_COMPILER_WARNINGS_GNU_CLANG
 		# General
 		-Wall												# Enable warnings for common coding mistakes or potential errors.
@@ -52,6 +53,7 @@ function(bob_configure_compiler_warnings TARGET)
 	)
 
 	set(BOB_COMPILER_WARNINGS_GNU
+		-fdiagnostics-color=always							# Generate colourized diagnostic warnings.
 		# (Type) conversion
 		-Warith-conversion									# Warn about implicit type conversions during arithmitic operations.
 		$<$<COMPILE_LANGUAGE:CXX>:-Wuseless-cast>			# Warn about casting to the same type.
@@ -66,9 +68,12 @@ function(bob_configure_compiler_warnings TARGET)
 		-Wformat-truncation=2								# Warn when the output of sprintf/... might be truncated.
 	)
 
+
 	set(BOB_COMPILER_WARNINGS_CLANG
+		-fcolor-diagnostics										# Generate colourized diagnostic warnings.
+		$<$<BOOL:${BOB_CLANG_WARN_EVERYTHING}>:-Weverything>	# Enable all diagnostic warnings.
 		# Misc
-		-Wshadow-all										# Additional shadowing checks.
+		-Wshadow-all											# Additional shadowing checks.
 	)
 
 	set(BOB_COMPILER_WARNINGS_MSVC
@@ -111,41 +116,16 @@ function(bob_configure_compiler_warnings TARGET)
 endfunction()
 
 function(bob_configure_compiler_codegen TARGET)
-	#
-	# Determine compiler
-	#
-
-	if((CMAKE_C_COMPILER_ID MATCHES "Clang") OR (CMAKE_CXX_COMPILER_ID MATCHES "Clang"))
-		set(BOB_COMPILER_CLANG On)
-	elseif((CMAKE_CXX_COMPILER_ID MATCHES "GNU") OR (CMAKE_C_COMPILER_ID MATCHES "GNU"))
-		set(BOB_COMPILER_GCC On)
-	elseif(MSVC)
-		set(BOB_COMPILER_MSVC On)
-	else()
-		message(FATAL_ERROR "Unsupported compiler.")
-	endif()
-
-	#
-	# Code generation
-	#
-
 	set(BOB_COMPILER_BEHAVIOUR_GNU_CLANG
 		-fno-common													# Warn when global variables are not unique (and unintentionaly merged.)
 		-fstack-usage												# Generate stack depth information.
 		-fwrapv														# Assume signed arithmatic may wrap around.
 		$<$<COMPILE_LANGUAGE:ASM>:-x assembler-with-cpp>			# Compile ASM as C++
 		$<$<COMPILE_LANGUAGE:CXX>:-fdiagnostics-show-template-tree>	# Print template structures in a tree structure.
-		$<$<COMPILE_LANGUAGE:CXX>:-fno-use-cxa-atexit>				# Don't allow registering exit functions.
 	)
 
 	set(BOB_COMPILER_BEHAVIOUR_GNU
-		-fdiagnostics-color=always								# Generate colourized diagnostic warnings.
 		$<$<NOT:$<CONFIG:Release>>:-fvar-tracking-assignments>	# Attempt to improve debugging by annotating variable assignment.
-	)
-
-
-	set(BOB_COMPILER_BEHAVIOUR_CLANG
-		-fcolor-diagnostics									# Generate colourized diagnostic warnings.
 	)
 
 	set(BOB_COMPILER_BEHAVIOUR_MSVC
@@ -164,7 +144,6 @@ function(bob_configure_compiler_codegen TARGET)
 	target_compile_options(${TARGET}
 		INTERFACE
 			$<$<CXX_COMPILER_ID:Clang>:${BOB_COMPILER_BEHAVIOUR_GNU_CLANG}>
-			$<$<CXX_COMPILER_ID:Clang>:${BOB_COMPILER_BEHAVIOUR_CLANG}>
 			$<$<CXX_COMPILER_ID:GNU>:${BOB_COMPILER_BEHAVIOUR_GNU_CLANG}>
 			$<$<CXX_COMPILER_ID:GNU>:${BOB_COMPILER_BEHAVIOUR_GNU}>
 			$<$<CXX_COMPILER_ID:MSVC>:${BOB_COMPILER_BEHAVIOUR_MSVC}>
