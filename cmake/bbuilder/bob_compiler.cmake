@@ -46,6 +46,7 @@ function(bob_configure_compiler_warnings TARGET)
 		-Wunused											# Warn about any unused parameter/function/variable/etc...
 		-Wmisleading-indentation							# Warn about indentation giving the impression of scope.
 		-Winline											# Warn when desired inlining is not possible.
+		-Wzero-as-null-pointer-constant						# Warn about the use of 0 as nullptr.
 		# Strings related
 		-Wvla												# Warn about variable-length arrays being used.
 		-Wwrite-strings										# Warn when attempting to write to a string constant.
@@ -57,6 +58,7 @@ function(bob_configure_compiler_warnings TARGET)
 		# (Type) conversion
 		-Warith-conversion									# Warn about implicit type conversions during arithmitic operations.
 		$<$<COMPILE_LANGUAGE:CXX>:-Wuseless-cast>			# Warn about casting to the same type.
+		-Wcast-align=strict
 		# Misc
 		-Wduplicated-branches								# Warn about identifcal branches in if-else expressions.
 		-Wduplicated-cond									# Warn about duplicated conditions in if-else expressions.
@@ -64,6 +66,7 @@ function(bob_configure_compiler_warnings TARGET)
 		-Wlogical-op										# Warn about potential errors with logical operations.
 		-Wtrampolines										# Warn about code to jump to a function, requiring an executable stack.
 		-Warray-bounds=2									# Warns about invalid array indices.
+		-Wstrict-null-sentinel								# Warn about the use of an uncasted NULL as sentinel.
 		# Strings related
 		-Wformat-truncation=2								# Warn when the output of sprintf/... might be truncated.
 	)
@@ -119,8 +122,8 @@ function(bob_configure_compiler_codegen TARGET)
 	set(BOB_COMPILER_BEHAVIOUR_GNU_CLANG
 		-fno-common													# Warn when global variables are not unique (and unintentionaly merged.)
 		-fstack-usage												# Generate stack depth information.
-		-fvisibility=hidden
-		-fvisibility-inlines-hidden
+		-fvisibility=hidden											# Sets the default symbol visibility to hidden.
+		-fvisibility-inlines-hidden									# Sets the default symbol visibility to hidden for inline functions.
 		-fwrapv														# Assume signed arithmatic may wrap around.
 		$<$<COMPILE_LANGUAGE:ASM>:-x assembler-with-cpp>			# Compile ASM as C++
 		$<$<COMPILE_LANGUAGE:CXX>:-fdiagnostics-show-template-tree>	# Print template structures in a tree structure.
