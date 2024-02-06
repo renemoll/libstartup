@@ -1,5 +1,12 @@
 cmake_minimum_required(VERSION 3.12)
 
+#
+# [BOB] This is needed right here to download the toolchain files
+#       before they are used within a project.
+#
+list(PREPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
+find_package(Bob REQUIRED)
+
 project(libstartup
     VERSION 0.1.0
 	LANGUAGES CXX C ASM
@@ -18,16 +25,21 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
     set(CMAKE_CXX_VISIBILITY_PRESET hidden)
     set(CMAKE_VISIBILITY_INLINES_HIDDEN YES)
 
-	add_compile_definitions(STM32F767xx)
+	# TODO: make this part of bob-cmake?
+	add_compile_definitions(${MCU})
 endif()
 
 #
 # Gather the toolchain configuration
 #
 
-set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
-set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/bbuilder" ${CMAKE_MODULE_PATH})
 include(bob)
+
+if (CMAKE_CROSSCOMPILING)
+	# TODO: make this part of bob-cmake?
+	include(cmsis)
+	include(stm32)
+endif()
 
 #
 # Configure the applications
